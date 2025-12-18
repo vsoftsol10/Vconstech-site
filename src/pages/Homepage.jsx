@@ -7,6 +7,9 @@ import mobileImg from '../assets/vconstech-materialManagementPage.png';
 import contractorImg from '../assets/contractorCard.jpg';
 import interiorImg from '../assets/interiorCard.jpg';
 import ownerImg from '../assets/ownerCard.jpg';
+import Time1 from '../assets/Time1.jpg'; // adjust path as needed
+import costmanagement from "E:/Frontend/Vconstech-site/src/assets/cost management.jpg";
+import digital from "E:/Frontend/Vconstech-site/src/assets/digital.jpg";
 
 const Homepage = () => {
   const features = [
@@ -67,13 +70,10 @@ const Homepage = () => {
     },
   ];
 
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative text-white py-12 sm:py-14 md:py-16 lg:py-20 overflow-hidden flex items-center">
-
-        {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
           autoPlay
@@ -83,125 +83,73 @@ const Homepage = () => {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-
-        {/* Black Overlay */}
         <div className="absolute inset-0 bg-black/60 z-10"></div>
-
-        {/* Content */}
-        <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Construction ERP Software for Efficient
-              <span className="text-[#ffbe01]"> Project Management</span>.
-            </h1>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="bg-[#ffbe01] text-black px-6 sm:px-8 py-3 rounded-md font-semibold text-base sm:text-lg hover:bg-yellow-400 transition-colors duration-200 w-full sm:w-auto text-center"
-              >
-                Start Free Trial
-              </Link>
-
-              <Link
-                to="/about"
-                className="border-2 border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold text-base sm:text-lg hover:bg-white hover:text-black transition-colors duration-200 w-full sm:w-auto text-center"
-              >
-                Learn More
-              </Link>
-            </div>
+        <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Construction ERP Software for Efficient <span className="text-[#ffbe01]">Project Management</span>.
+          </h1>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="bg-[#ffbe01] text-black px-6 sm:px-8 py-3 rounded-md font-semibold text-base sm:text-lg hover:bg-yellow-400 transition-colors duration-200 w-full sm:w-auto text-center"
+            >
+              Start Free Trial
+            </Link>
+            <Link
+              to="/about"
+              className="border-2 border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold text-base sm:text-lg hover:bg-white hover:text-black transition-colors duration-200 w-full sm:w-auto text-center"
+            >
+              Learn More
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Target Audience Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-8">
-              Designed for Construction Professionals
-            </h2>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-12">
+            Designed for Construction Professionals
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
-              <img
-                src={ownerImg}
-                alt="Building Developer"
-                className="w-full h-64 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 p-6">
-                  <div className="text-2xl md:text-3xl font-bold text-[#ffbe01] mb-4">
-                    Building Developer
-                  </div>
-                  <div className="text-white text-sm md:text-base leading-relaxed">
-                    Comprehensive project oversight and financial management solutions
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
-              <img
-                src={contractorImg}
-                alt="Contractor"
-                className="w-full h-64 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 p-6">
-                  <div className="text-2xl md:text-3xl font-bold text-[#ffbe01] mb-4">
-                    Contractor
-                  </div>
-                  <div className="text-white text-sm md:text-base leading-relaxed">
-                    Streamlined operations, workforce management, and cost control
+            {[ownerImg, contractorImg, interiorImg].map((img, i) => (
+              <div key={i} className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
+                <img src={img} alt="" className="w-full h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                  <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 p-6">
+                    <div className="text-2xl md:text-3xl font-bold text-[#ffbe01] mb-4">
+                      {i === 0 ? "Building Developer" : i === 1 ? "Contractor" : "Interior Designer"}
+                    </div>
+                    <div className="text-white text-sm md:text-base leading-relaxed">
+                      {i === 0
+                        ? "Comprehensive project oversight and financial management solutions"
+                        : i === 1
+                        ? "Streamlined operations, workforce management, and cost control"
+                        : "Creative project management with material tracking and client coordination"}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
-              <img
-                src={interiorImg}
-                alt="Interior Designer"
-                className="w-full h-64 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 p-6">
-                  <div className="text-2xl md:text-3xl font-bold text-[#ffbe01] mb-4">
-                    Interior Designer
-                  </div>
-                  <div className="text-white text-sm md:text-base leading-relaxed">
-                    Creative project management with material tracking and client coordination
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-              Powerful Features for Construction Professionals
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to manage your construction projects efficiently and effectively.
-            </p>
-          </div>
-
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            Powerful Features for Construction Professionals
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-16">
+            Everything you need to manage your construction projects efficiently and effectively.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-lg h-full flex flex-col">
-                <div className="mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-2xl font-semibold text-black mb-4 flex-grow">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-semibold text-black mb-4 flex-grow">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -209,74 +157,56 @@ const Homepage = () => {
       </section>
 
       {/* Why Choose Vconstech Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-              Why Choose <span className="text-[#ffbe01]">Vconstech</span>?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Addressing the biggest challenges in construction management with proven solutions that save time, reduce costs, and boost profitability.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-1 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+            Why Choose <span className="text-[#ffbe01]">Vconstech</span>?
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-16">
+            Addressing the biggest challenges in construction management with proven solutions that save time, reduce costs, and boost profitability.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 */}
             <div className="bg-gray-50 p-8 rounded-lg">
-              <div className="text-center mb-6">
-                <svg className="w-16 h-16 text-[#000] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h2 className="text-xl font-semibold text-[#ffbe01] mb-2">Project Delays</h2>
-                <p className="text-sm text-gray-600 mb-4 font-medium">Common construction challenge</p>
-              </div>
-              <div className="text-center mb-4">
-                <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
-              </div>
+              <img src={Time1} alt="Project Delays" className="max-w-26 md:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4"/>
+              <h3 className="text-xl font-semibold text-[#ffbe01] mb-2">Project Delays</h3>
+              <p className="text-sm text-gray-600 mb-4 font-medium">Common construction challenge</p>
+              <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center leading-relaxed">
-                Real-time project tracking, automated progress updates, and intelligent scheduling
-                prevent delays and ensure projects stay on track with 98% on-time delivery rate.
+                Real-time project tracking, automated progress updates, and intelligent scheduling prevent delays and ensure projects stay on track with 98% on-time delivery rate.
               </p>
             </div>
 
+            {/* Card 2 */}
             <div className="bg-gray-50 p-8 rounded-lg">
-              <div className="text-center mb-6">
-                <svg className="w-16 h-16 text-[#000] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-                <h2 className="text-xl font-semibold text-[#ffbe01] mb-2" >Cost Overruns</h2>
-                <p className="text-sm text-gray-600 mb-4 font-medium">Budget management nightmare</p>
-              </div>
-              <div className="text-center mb-4">
-                <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
-              </div>
+              <img src={costmanagement} alt="Project Delays" className="max-w-36 md:max-w-36 mx-auto h-fit transition-transform duration-300 ease-in-out transform hover:scale-105 mb-17"/>
+              <h3 className="text-xl font-semibold text-[#ffbe01] mb-2">Cost Overruns</h3>
+              <p className="text-sm text-gray-600 mb-4 font-medium">Budget management nightmare</p>
+              <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center leading-relaxed">
                 Advanced cost tracking, budget forecasting, and material cost optimization
                 help you stay within budget and maximize profitability on every project.
               </p>
             </div>
 
+            {/* Card 3 */}
             <div className="bg-gray-50 p-8 rounded-lg">
-              <div className="text-center mb-6">
-                <svg className="w-16 h-16 text-[#000] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <h2 className="text-xl font-semibold text-[#ffbe01] mb-2" >Manual Paperwork</h2>
-                <p className="text-sm text-gray-600 mb-4 font-medium">Time-consuming documentation</p>
-              </div>
-              <div className="text-center mb-4">
-                <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
-              </div>
+              <img src={digital} alt="Project Delays" className="max-w-26 md:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4"/>
+              <h3 className="text-xl font-semibold text-[#ffbe01] mb-2">Manual Paperwork</h3>
+              <p className="text-sm text-gray-600 mb-4 font-medium">Time-consuming documentation</p>
+              <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center leading-relaxed">
-                Digital documentation, automated reporting, and cloud-based file management
+               Digital documentation, automated reporting, and cloud-based file management
                 eliminate paperwork hassles and ensure compliance with industry standards.
-              </p>
+               </p>
             </div>
-          </div>
+
+            </div>
         </div>
       </section>
 
       {/* Who It's For Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-1 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
@@ -287,8 +217,8 @@ const Homepage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12" >
+            <div className="bg-white p-8 rounded-lg shadow-lg" >
               <div className="flex items-center mb-6">
                 <div className="bg-[#ffbe01] p-3 rounded-full mr-4">
                   <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -393,6 +323,7 @@ const Homepage = () => {
             <div>
               <h3 className="text-2xl font-bold text-black mb-6">Transform Your Operations</h3>
               <div className="space-y-6">
+                
                 <div className="flex items-start">
                   <div className="bg-[#ffbe01] p-2 rounded-full mr-4 flex-shrink-0">
                     <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -647,6 +578,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
 
     </div>
   );

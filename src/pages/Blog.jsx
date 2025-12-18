@@ -47,7 +47,7 @@ const Blog = () => {
       id: 5,
       title: "The Role of AI and Machine Learning in Modern Construction ERP",
       excerpt: "Explore how artificial intelligence and machine learning are being integrated into construction ERP systems to provide predictive analytics and automated decision-making.",
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=400&fit=crop",
+      image: "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       author: "Sarah Johnson",
       date: "November 15, 2025",
       readTime: "6 min read",

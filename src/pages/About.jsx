@@ -1,7 +1,24 @@
 import heroVideo from '../assets/abouthero.mp4';
 
+import timeImage from "E:/Frontend/Vconstech-site/src/assets/AboutTime.jpg";
+import costmanagement from "E:/Frontend/Vconstech-site/src/assets/cost management.jpg";
+import Service24 from "E:/Frontend/Vconstech-site/src/assets/Service24.jpg"
+import ideas from "E:/Frontend/Vconstech-site/src/assets/ideas.png";
+import SaveMoney from "E:/Frontend/Vconstech-site/src/assets/weight_7448974.png";
+import hours24 from "E:/Frontend/Vconstech-site/src/assets/24-hours_6021109.png";
+import timeManagement from "E:/Frontend/Vconstech-site/src/assets/time-management_8251971.png";
+import cyber from "E:/Frontend/Vconstech-site/src/assets/cyber-security_10429893.png";
+import engineer from "E:/Frontend/Vconstech-site/src/assets/engineer_11773950.png";
+import { NavLink } from "react-router-dom";
+
+
+
+
+
+
 const About = () => {
-  const features = [
+
+ const features = [
     {
       icon: "🏗️",
       title: "Project Management",
@@ -69,6 +86,8 @@ const About = () => {
   };
 
   return (
+
+
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative text-white py-20 overflow-hidden">
@@ -117,11 +136,30 @@ const About = () => {
                 truly understand and serve the unique needs of building developers, contractors, and interior designers.
               </p>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <div className="text-center">
+                <div className="flex flex-col md:flex-row items-center gap-6">
+  
+              {/* Image */}
+              <div className="h-40 w-40 flex justify-center md:items-start">
+               <img
+               src={Service24}
+               alt="24/7 service"
+               className="h-full w-full object-contain"
+                />
+             </div>
+
+                 {/* Text */}
+                 <div className="text-center md:text-left py-6">
                   <div className="text-3xl font-bold text-[#ffbe01] mb-2">24/7</div>
-                  <div className="text-lg font-semibold text-gray-800 mb-2">Support Commitment</div>
-                  <p className="text-gray-600 text-sm">Round-the-clock expert assistance whenever you need it</p>
+                   <div className="text-lg font-semibold text-gray-800 mb-2">
+                      Support Commitment
+                    </div>
+                 <p className="text-gray-600 text-sm">
+                     Round-the-clock expert assistance whenever you need it
+                     </p>
                 </div>
+
+                </div>
+
               </div>
             </div>
             <div className="relative rounded-lg overflow-hidden shadow-lg">
@@ -241,17 +279,17 @@ const About = () => {
             <div className="space-y-8">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">🏗️</div>
+                  <img src={engineer} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Industry-Specific Expertise</h3>
-                    <p className="text-gray-600">Unlike generic software, Vconstech is built specifically for construction with deep understanding of industry workflows and challenges.</p>
+                    <p className="text-gray-600">Built exclusively for construction, Vconstech understands industry workflows and challenges better than generic software.</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">⚡</div>
+                  <img src={timeManagement} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Rapid Implementation</h3>
                     <p className="text-gray-600">Get up and running quickly with our streamlined onboarding process and comprehensive training programs.</p>
@@ -261,7 +299,7 @@ const About = () => {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">🎯</div>
+                  <img src={SaveMoney} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Proven ROI</h3>
                     <p className="text-gray-600">Measurable returns on investment with cost savings, efficiency gains, and improved project profitability.</p>
@@ -273,7 +311,7 @@ const About = () => {
             <div className="space-y-8">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">🔒</div>
+                  <img src={cyber} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Enterprise Security</h3>
                     <p className="text-gray-600">Bank-level security with encryption, compliance certifications, and robust data protection measures.</p>
@@ -281,19 +319,19 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md border-2 border-[#ffbe01]">
+              <div className="bg-white p-6 rounded-lg shadow-md ">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">📞</div>
+                  <img src={hours24} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">24/7 Priority Support</h3>
-                    <p className="text-gray-600">Round-the-clock expert assistance from construction industry specialists. Never face technical challenges alone with our dedicated support team available 24 hours a day, 7 days a week.</p>
+                    <p className="text-gray-600">24/7 expert support from construction specialists ensures you never face technical challenges alone.</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <div className="bg-[#ffbe01] text-black rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">🚀</div>
+                  <img src={ideas} className="  rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Continuous Innovation</h3>
                     <p className="text-gray-600">Regular updates with new features based on user feedback and industry advancements.</p>
@@ -317,9 +355,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             {commitments.map((commitment, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-lg text-center">
+              <div key={index} className="bg-gray-50 p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
                 <div className="flex justify-center mb-6">
                   {commitment.icon}
                 </div>
@@ -332,9 +370,15 @@ const About = () => {
               </div>
             ))}
           </div>
+            {/* join our community */}
+           
+           <div className="flex flex-col md:flex-row gap-8 mt-20">
 
-          <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-8 rounded-lg max-w-4xl mx-auto">
+             <div className="flex gap-4 w-full lg:w-1/2">
+             <img src={timeImage} alt="24/7 Expert Support" className='object-cover w-full h-76 rounded-2xl'></img>
+             </div>
+          <div className="text-center ">
+            <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-8 rounded-2xl max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold text-black mb-4">Join Our Growing Community</h3>
               <p className="text-gray-700 mb-6">
                 Over 50 construction companies trust Vconstech to power their business operations.
@@ -352,6 +396,7 @@ const About = () => {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
