@@ -13,9 +13,6 @@ import { NavLink } from "react-router-dom";
 
 
 
-
-
-
 const About = () => {
 
  const features = [
