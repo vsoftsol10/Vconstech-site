@@ -10,6 +10,7 @@ import ownerImg from '../assets/ownerCard.jpg';
 import Time1 from '../assets/Time1.jpg'; // adjust path as needed
 import costmanagement from "E:/Frontend/Vconstech-site/src/assets/cost management.jpg";
 import digital from "E:/Frontend/Vconstech-site/src/assets/digital.jpg";
+import costoverruns from "E:/Frontend/Vconstech-site/src/assets/costoverruns.jpg"
 
 const Homepage = () => {
   const features = [
@@ -43,9 +44,10 @@ const Homepage = () => {
     {
       icon: (
         <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3v18h18" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 14l3-3 4 4 5-6"/>
         </svg>
+
       ),
       title: "Financial Management",
       description: "Comprehensive financial tracking, invoicing, payment processing, and financial reporting for construction projects."
@@ -179,8 +181,8 @@ const Homepage = () => {
 
             {/* Card 2 */}
             <div className="bg-gray-50 p-8 rounded-lg">
-              <img src={costmanagement} alt="Project Delays" className="max-w-36 md:max-w-36 mx-auto h-fit transition-transform duration-300 ease-in-out transform hover:scale-105 mb-17"/>
-              <h3 className="text-xl font-semibold text-[#ffbe01] mb-2">Cost Overruns</h3>
+              <img src={costoverruns} alt="Project Delays" className="max-w-36 md:max-w-36 mx-auto h-fit transition-transform duration-300 ease-in-out transform hover:scale-105 mb-4"/>
+              <h3 className="text-xl font-semibold text-[#ffbe01] mb-2 ">Cost Overruns</h3>
               <p className="text-sm text-gray-600 mb-4 font-medium">Budget management nightmare</p>
               <h4 className="text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center leading-relaxed">
@@ -310,7 +312,7 @@ const Homepage = () => {
       {/* Importance Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-5">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
               The <span className="text-[#ffbe01]">Importance</span> of Vconstech for Your Construction Business
             </h2>
@@ -319,7 +321,7 @@ const Homepage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <div>
               <h3 className="text-2xl font-bold text-black mb-6">Transform Your Operations</h3>
               <div className="space-y-6">
@@ -362,7 +364,7 @@ const Homepage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-lg">
+            <div className="bg-gray-50 p-20 rounded-lg">
               <div className="text-center">
                 <img
                   src={softwareErpImg}
@@ -376,7 +378,7 @@ const Homepage = () => {
       </section>
 
       {/* Live Site Tracking Preview Section */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">

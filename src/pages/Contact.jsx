@@ -4,6 +4,8 @@ import { EMAILJS_CONFIG } from '../config/emailjs';
 import contactHero from '../assets/contact-hero.mp4';
 
 const Contact = () => {
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,20 +15,47 @@ const Contact = () => {
     message: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+ const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  // Phone number: allow only digits & max 10
+  if (name === "phone") {
+    if (!/^\d*$/.test(value)) return; // block alphabets
+    if (value.length > 10) return; // block > 10 digits
+  }
+
+  setFormData({
+    ...formData,
+    [name]: value
+  });
+};
+const validateForm = () => {
+  let newErrors = {};
+
+  // Email validation
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    newErrors.email = "Please enter a valid email address with @ and '.com'";
+  }
+
+  // Phone validation
+  if (formData.phone && formData.phone.length !== 10) {
+    newErrors.phone = "Phone number must be exactly 10 digits";
+  }
+
+  if (!formData.name) newErrors.name = "Name is required";
+  if (!formData.subject) newErrors.subject = "Subject is required";
+  if (!formData.message) newErrors.message = "Message is required";
+
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert('Please fill in all required fields');
-      return;
-    }
+    if (!validateForm()) return;
+
 
     console.log('Starting contact form submission...');
     console.log('Form data:', formData);
@@ -180,10 +209,11 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
+                      // required
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
                       placeholder="John Doe"
-                    />
+                    />  {errors.name && ( <p className="text-red-500 text-sm mt-1">{errors.name}</p>)}
+
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -195,10 +225,12 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      required
+                      // required
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
                       placeholder="john@gmail.com"
                     />
+                    {errors.email && ( <p className="text-red-500 text-sm mt-1">{errors.email}</p>)}
+
                   </div>
                 </div>
 
@@ -221,15 +253,21 @@ const Contact = () => {
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
-                      placeholder="+91 9094442237"
-                    />
+                  <input
+  type="tel"
+  id="phone"
+  name="phone"
+  value={formData.phone}
+  onChange={handleChange}
+  maxLength={10}
+  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01]"
+  placeholder="10 digit mobile number"
+/>
+
+{errors.phone && (
+  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+)}
+
                   </div>
                 </div>
 
@@ -242,7 +280,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
+                    // required
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
                   >
                     <option value="">Select a subject</option>
@@ -252,6 +290,9 @@ const Contact = () => {
                     <option value="partnership">Partnership Opportunity</option>
                     <option value="other">Other</option>
                   </select>
+                  {errors.subject && (
+  <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+)}
                 </div>
 
                 <div>
@@ -263,11 +304,14 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    required
+                    // required
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200 resize-none"
                     placeholder="Tell us about your construction project needs..."
                   />
+                  {errors.message && (
+  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+)}
                 </div>
 
                 <button

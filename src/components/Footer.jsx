@@ -82,7 +82,7 @@ const Footer = () => {
                 Upstair, Kotak Mahindra Bank,<br />
                 Lakshmi Complex, Anbunagar Extension<br />
                 Vannarapettai, Tirunelveli.<br />
-                Tamilnadu - 627002, India.
+                Tamil Nadu - 627002, India.
               </p>
               <p>
                 <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20">

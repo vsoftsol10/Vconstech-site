@@ -331,7 +331,7 @@ const About = () => {
 
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <div className="flex items-start">
-                  <img src={ideas} className="  rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4"/>
+                  <img src={ideas} className="   w-12 h-12 flex items-center justify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">Continuous Innovation</h3>
                     <p className="text-gray-600">Regular updates with new features based on user feedback and industry advancements.</p>
