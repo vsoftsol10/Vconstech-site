@@ -1,18 +1,15 @@
 import heroVideo from '../assets/abouthero.mp4';
 
-import timeImage from "E:/Frontend/Vconstech-site/src/assets/AboutTime.jpg";
-import costmanagement from "E:/Frontend/Vconstech-site/src/assets/cost management.jpg";
-import Service24 from "E:/Frontend/Vconstech-site/src/assets/Service24.jpg"
-import ideas from "E:/Frontend/Vconstech-site/src/assets/ideas.png";
-import SaveMoney from "E:/Frontend/Vconstech-site/src/assets/weight_7448974.png";
-import hours24 from "E:/Frontend/Vconstech-site/src/assets/24-hours_6021109.png";
-import timeManagement from "E:/Frontend/Vconstech-site/src/assets/time-management_8251971.png";
-import cyber from "E:/Frontend/Vconstech-site/src/assets/cyber-security_10429893.png";
-import engineer from "E:/Frontend/Vconstech-site/src/assets/engineer_11773950.png";
+import timeImage from "../assets/AboutTime.jpg";
+import costmanagement from "../assets/cost management.jpg";
+import Service24 from "../assets/Service24.jpg"
+import ideas from "../assets/ideas.png";
+import SaveMoney from "../assets/weight_7448974.png";
+import hours24 from "../assets/24-hours_6021109.png";
+import timeManagement from "../assets/time-management_8251971.png";
+import cyber from "../assets/cyber-security_10429893.png";
+import engineer from "../assets/engineer_11773950.png";
 import { NavLink } from "react-router-dom";
-
-
-
 
 
 
