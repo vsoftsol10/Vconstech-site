@@ -41,6 +41,8 @@ window.testEmailJS = async () => {
 };
 
 const FloatingButtons = () => {
+  const [errors, setErrors] = useState({});
+
   const [isVisible, setIsVisible] = useState(false);
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -90,21 +92,48 @@ const FloatingButtons = () => {
   };
 
   // Handle demo form changes
-  const handleDemoFormChange = (e) => {
-    setDemoForm({
-      ...demoForm,
-      [e.target.name]: e.target.value
-    });
-  };
+const handleDemoFormChange = (e) => {
+  const { name, value } = e.target;
+
+  // Phone: allow only numbers and max 10 digits
+  if (name === "phone") {
+    if (!/^\d*$/.test(value)) return; // blocks alphabets
+    if (value.length > 10) return;    // blocks more than 10 digits
+  }
+
+  setDemoForm({
+    ...demoForm,
+    [name]: value
+  });
+};
+const validateDemoForm = () => {
+  let newErrors = {};
+
+  // Email validation
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(demoForm.email)) {
+    newErrors.email = "Enter a valid email address with @ and'.com' ";
+  }
+
+  // Phone validation (exactly 10 digits)
+  if (demoForm.phone.length !== 10) {
+    newErrors.phone = "Phone number must be exactly 10 digits";
+  }
+  
+
+  if (demoForm.name.length==0){ newErrors.name = "Name is required";}
+  if (!demoForm.profession) newErrors.profession = "Profession is required";
+
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+
 
   // Handle demo form submission
   const handleDemoSubmit = async (e) => {
     e.preventDefault();
 
-    if (!demoForm.name || !demoForm.email || !demoForm.phone || !demoForm.profession) {
-      alert('Please fill in all required fields');
-      return;
-    }
+   if (!validateDemoForm()) return;
+
 
     console.log('Starting demo submission...');
     console.log('Form data:', demoForm);
@@ -238,48 +267,75 @@ const FloatingButtons = () => {
                   name="name"
                   value={demoForm.name}
                   onChange={handleDemoFormChange}
-                  required
+                  // required
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
                   placeholder="John Doe"
                 />
+                {/* Error BELOW input */}
+  {errors.name && (
+    <p className="text-red-500 text-sm mt-1">
+      {errors.name}
+    </p>
+  )}
               </div>
+              <div className="flex flex-col">
+  <label
+    htmlFor="demo-email"
+    className="block text-sm font-medium text-gray-700 mb-2"
+  >
+    Email Address *
+  </label>
 
-              <div>
-                <label htmlFor="demo-email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="demo-email"
-                  name="email"
-                  value={demoForm.email}
-                  onChange={handleDemoFormChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
-                  placeholder="john@company.com"
-                />
-              </div>
+  <input
+    type="email"
+    id="demo-email"
+    name="email"
+    value={demoForm.email}
+    onChange={handleDemoFormChange}
+    // required
+    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
+    placeholder="john@company.com"
+  />
 
-              <div>
-                <label htmlFor="demo-phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number (India) *
-                </label>
-                <div className="flex">
-                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
-                    +91
-                  </span>
-                  <input
-                    type="tel"
-                    id="demo-phone"
-                    name="phone"
-                    value={demoForm.phone}
-                    onChange={handleDemoFormChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
-                    placeholder="98000 100210"
-                  />
-                </div>
-              </div>
+  {/* Error BELOW input */}
+  {errors.email && (
+    <p className="text-red-500 text-sm mt-1">
+      {errors.email}
+    </p>
+  )}
+</div>
+
+
+
+             <div className="flex flex-col">
+  <label htmlFor="demo-phone" className="block text-sm font-medium text-gray-700 mb-2">
+    Phone Number (India) *
+  </label>
+
+  <div className="flex">
+    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
+      +91
+    </span>
+
+    <input
+      type="tel"
+      id="demo-phone"
+      name="phone"
+      value={demoForm.phone}
+      onChange={handleDemoFormChange}
+      maxLength={10}
+      // required
+      className="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:ring-[#ffbe01] focus:border-[#ffbe01]"
+      placeholder="10 digit mobile number"
+    />
+  </div>
+
+  {/* ERROR BELOW PHONE INPUT */}
+  {errors.phone && (
+    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+  )}
+</div>
+
 
               <div>
                 <label htmlFor="demo-profession" className="block text-sm font-medium text-gray-700 mb-2">
@@ -290,7 +346,7 @@ const FloatingButtons = () => {
                   name="profession"
                   value={demoForm.profession}
                   onChange={handleDemoFormChange}
-                  required
+                  // required
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
                 >
                   <option value="">Select your profession</option>
@@ -301,6 +357,10 @@ const FloatingButtons = () => {
                   <option value="project-manager">Project Manager</option>
                   <option value="other">Other</option>
                 </select>
+                {/* ERROR BELOW PHONE INPUT */}
+  {errors.profession && (
+    <p className="text-red-500 text-sm mt-1">{errors.profession}</p>
+  )}
               </div>
 
               <div>
