@@ -86,12 +86,6 @@ const Header = () => {
                       <ul className="space-y-2">
                         <li>
                           <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Site Survey</span>
-                            <span className="block text-xs text-gray-500 mt-1">Smart recce and technical survey.</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
                             <span className="font-semibold">Design Management</span>
                             <span className="block text-xs text-gray-500 mt-1">Manage designs, versions & mark changes</span>
                           </Link>
@@ -118,62 +112,6 @@ const Header = () => {
                           <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
                             <span className="font-semibold">Audit & Handover</span>
                             <span className="block text-xs text-gray-500 mt-1">Snaglist, Joint Measurements & Handover documents</span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    {/* Column 2: VENDOR MANAGEMENT */}
-                    <div>
-                      <h3 className="text-sm font-bold text-gray-900 uppercase mb-3">VENDOR MANAGEMENT</h3>
-                      <ul className="space-y-2">
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Discover & Manage Vendors</span>
-                            <span className="block text-xs text-gray-500 mt-1">Find most relevent vendors for your Job</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Manage Catalogues</span>
-                            <span className="block text-xs text-gray-500 mt-1">BOQ templates & material libraries</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Rate Contracts</span>
-                            <span className="block text-xs text-gray-500 mt-1">Create & Fetch RCs.</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Orders Management</span>
-                            <span className="block text-xs text-gray-500 mt-1">Divide work among vendors</span>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    {/* Column 3: TASK MANAGEMENT */}
-                    <div>
-                      <h3 className="text-sm font-bold text-gray-900 uppercase mb-3">TASK MANAGEMENT</h3>
-                      <ul className="space-y-2">
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Tasks & Reminders</span>
-                            <span className="block text-xs text-gray-500 mt-1">Automate your Tasks</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Contextual Collaboration</span>
-                            <span className="block text-xs text-gray-500 mt-1">Comment on specific incident or follow-ups</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
-                            <span className="font-semibold">Manage Approvals</span>
-                            <span className="block text-xs text-gray-500 mt-1">All your approvals in one place.</span>
                           </Link>
                         </li>
                       </ul>
