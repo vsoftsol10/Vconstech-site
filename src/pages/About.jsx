@@ -12,7 +12,6 @@ import engineer from "../assets/engineer_11773950.png";
 import { NavLink } from "react-router-dom";
 
 
-
 const About = () => {
 
  const features = [

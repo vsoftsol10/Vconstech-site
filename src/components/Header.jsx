@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/constech-logo.png';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [solutionForOpen, setSolutionForOpen] = useState(false);
+  const [peopleWeSupportOpen, setPeopleWeSupportOpen] = useState(false);
+  const [mobileSolutionOpen, setMobileSolutionOpen] = useState(false);
+  const [mobilePeopleOpen, setMobilePeopleOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -10,11 +14,13 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+    setMobileSolutionOpen(false);
+    setMobilePeopleOpen(false);
   };
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex justify-between items-center h-24 md:h-28 lg:h-32 xl:h-36">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -40,19 +46,177 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-6 items-center">
             <Link
               to="/"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               Home
             </Link>
+            
             <Link
               to="/about"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               About Us
             </Link>
+            
+            {/* Solution For Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setSolutionForOpen(true)}
+              onMouseLeave={() => setSolutionForOpen(false)}
+            >
+              <button className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200 flex items-center">
+                Solution For
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {solutionForOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-4 bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
+                  onMouseEnter={() => setSolutionForOpen(true)}
+                  onMouseLeave={() => setSolutionForOpen(false)}
+                >
+                  <div className="grid grid-cols-3 gap-6 px-4" style={{ minWidth: '900px' }}>
+                    {/* Column 1: PROJECT MANAGEMENT */}
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 uppercase mb-3">PROJECT MANAGEMENT</h3>
+                      <ul className="space-y-2">
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Site Survey</span>
+                            <span className="block text-xs text-gray-500 mt-1">Smart recce and technical survey.</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Design Management</span>
+                            <span className="block text-xs text-gray-500 mt-1">Manage designs, versions & mark changes</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Proposals & BOQ</span>
+                            <span className="block text-xs text-gray-500 mt-1">Create & share BOQ with Clients</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Activity Schedule</span>
+                            <span className="block text-xs text-gray-500 mt-1">Schedule activities, set deadlines and highlight dependencies</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Work Progress</span>
+                            <span className="block text-xs text-gray-500 mt-1">Daily Reports & Live Status</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Audit & Handover</span>
+                            <span className="block text-xs text-gray-500 mt-1">Snaglist, Joint Measurements & Handover documents</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    {/* Column 2: VENDOR MANAGEMENT */}
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 uppercase mb-3">VENDOR MANAGEMENT</h3>
+                      <ul className="space-y-2">
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Discover & Manage Vendors</span>
+                            <span className="block text-xs text-gray-500 mt-1">Find most relevent vendors for your Job</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Manage Catalogues</span>
+                            <span className="block text-xs text-gray-500 mt-1">BOQ templates & material libraries</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Rate Contracts</span>
+                            <span className="block text-xs text-gray-500 mt-1">Create & Fetch RCs.</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Orders Management</span>
+                            <span className="block text-xs text-gray-500 mt-1">Divide work among vendors</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    {/* Column 3: TASK MANAGEMENT */}
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 uppercase mb-3">TASK MANAGEMENT</h3>
+                      <ul className="space-y-2">
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Tasks & Reminders</span>
+                            <span className="block text-xs text-gray-500 mt-1">Automate your Tasks</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Contextual Collaboration</span>
+                            <span className="block text-xs text-gray-500 mt-1">Comment on specific incident or follow-ups</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                            <span className="font-semibold">Manage Approvals</span>
+                            <span className="block text-xs text-gray-500 mt-1">All your approvals in one place.</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* People We Support Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setPeopleWeSupportOpen(true)}
+              onMouseLeave={() => setPeopleWeSupportOpen(false)}
+            >
+              <button className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200 flex items-center">
+                People We Support
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {peopleWeSupportOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                  onMouseEnter={() => setPeopleWeSupportOpen(true)}
+                  onMouseLeave={() => setPeopleWeSupportOpen(false)}
+                >
+                  <Link to="#" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Builders
+                  </Link>
+                  <Link to="#" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Contractor
+                  </Link>
+                  <Link to="#" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Interiors
+                  </Link>
+                  <Link to="#" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Site Engineers
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link
               to="/pricing"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
@@ -105,6 +269,120 @@ const Header = () => {
               >
                 Home
               </Link>
+              
+              {/* Solution For Mobile */}
+              <div>
+                <button
+                  onClick={() => setMobileSolutionOpen(!mobileSolutionOpen)}
+                  className="w-full flex items-center justify-between px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
+                >
+                  Solution For
+                  <svg className={`w-4 h-4 transform transition-transform ${mobileSolutionOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {mobileSolutionOpen && (
+                  <div className="pl-6 pr-3 py-2 space-y-1 bg-gray-50">
+                    <div className="mb-2">
+                      <h4 className="text-xs font-bold text-gray-900 uppercase mb-2">PROJECT MANAGEMENT</h4>
+                      <div className="space-y-1">
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Site Survey</span>
+                          <span className="block text-xs text-gray-500">Smart recce and technical survey.</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Design Management</span>
+                          <span className="block text-xs text-gray-500">Manage designs, versions & mark changes</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Proposals & BOQ</span>
+                          <span className="block text-xs text-gray-500">Create & share BOQ with Clients</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Activity Schedule</span>
+                          <span className="block text-xs text-gray-500">Schedule activities, set deadlines and highlight dependencies</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Work Progress</span>
+                          <span className="block text-xs text-gray-500">Daily Reports & Live Status</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Audit & Handover</span>
+                          <span className="block text-xs text-gray-500">Snaglist, Joint Measurements & Handover documents</span>
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="mb-2">
+                      <h4 className="text-xs font-bold text-gray-900 uppercase mb-2">VENDOR MANAGEMENT</h4>
+                      <div className="space-y-1">
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Discover & Manage Vendors</span>
+                          <span className="block text-xs text-gray-500">Find most relevent vendors for your Job</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Manage Catalogues</span>
+                          <span className="block text-xs text-gray-500">BOQ templates & material libraries</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Rate Contracts</span>
+                          <span className="block text-xs text-gray-500">Create & Fetch RCs.</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Orders Management</span>
+                          <span className="block text-xs text-gray-500">Divide work among vendors</span>
+                        </Link>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-gray-900 uppercase mb-2">TASK MANAGEMENT</h4>
+                      <div className="space-y-1">
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Tasks & Reminders</span>
+                          <span className="block text-xs text-gray-500">Automate your Tasks</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Contextual Collaboration</span>
+                          <span className="block text-xs text-gray-500">Comment on specific incident or follow-ups</span>
+                        </Link>
+                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                          <span className="font-semibold">Manage Approvals</span>
+                          <span className="block text-xs text-gray-500">All your approvals in one place.</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* People We Support Mobile */}
+              <div>
+                <button
+                  onClick={() => setMobilePeopleOpen(!mobilePeopleOpen)}
+                  className="w-full flex items-center justify-between px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
+                >
+                  People We Support
+                  <svg className={`w-4 h-4 transform transition-transform ${mobilePeopleOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {mobilePeopleOpen && (
+                  <div className="pl-6 pr-3 py-2 space-y-1 bg-gray-50">
+                    <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
+                      Builders
+                    </Link>
+                    <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
+                      Contractor
+                    </Link>
+                    <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
+                      Interiors
+                    </Link>
+                    <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
+                      Site Engineers
+                    </Link>
+                  </div>
+                )}
+              </div>
+
               <Link
                 to="/about"
                 className="block px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
