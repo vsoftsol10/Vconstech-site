@@ -8,7 +8,7 @@ import contractorImg from '../assets/contractorCard.jpg';
 import interiorImg from '../assets/interiorCard.jpg';
 import ownerImg from '../assets/ownerCard.jpg';
 import Time1 from '../assets/Time1.jpg'; // adjust path as needed
-import digital from "E:/Frontend/Vconstech-site/src/assets/digital.jpg";
+// import digital from "E:/Frontend/Vconstech-site/src/assets/digital.jpg";
 import costoverruns from "E:/Frontend/Vconstech-site/src/assets/costoverruns.jpg"
 
 import costmanagement from "../assets/cost management.jpg";
