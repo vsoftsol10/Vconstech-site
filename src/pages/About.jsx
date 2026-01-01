@@ -1,6 +1,6 @@
 import heroVideo from '../assets/abouthero.mp4';
 
-import timeImage from "../assets/AboutTime.jpg";
+import timeImage from "../assets/3.png";
 import costmanagement from "../assets/cost management.jpg";
 import Service24 from "../assets/Service24.jpg"
 import ideas from "../assets/ideas.png";

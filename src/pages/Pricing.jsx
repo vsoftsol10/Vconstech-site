@@ -5,8 +5,8 @@ const Pricing = () => {
   const plans = [
     {
       name: "Starter",
-      price: "₹399",
-      period: "per month",
+      price: "₹9,999",
+      period: "per year",
       description: "Perfect for small construction teams and individual contractors.",
       features: [
         "Up to 5 active projects",
@@ -21,8 +21,8 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      price: "₹999",
-      period: "per month",
+      price: "₹19,999",
+      period: "per year",
       description: "Ideal for growing construction companies and development firms.",
       features: [
         "Up to 25 active projects",
@@ -36,6 +36,32 @@ const Pricing = () => {
       ],
       popular: true,
       cta: "Start Free Trial"
+    },
+     {
+      name: "Bussiness",
+      price: "₹34,999",
+      period: "per year",
+      description:"Ideal for builders and mid-size construction firms to manage work easily.",
+      features: [
+        
+        "All Professional features",
+
+"Labour management tools",
+
+"Advanced reports ",
+
+"Project scheduling & timeline management",
+
+"Resource allocation & tracking",
+
+"Cost estimation & budgeting tools",
+
+"Document management",
+
+"Team collaboration & communication tools"
+      ],
+      popular: false,
+      cta: "Contact Sales"
     },
     {
       name: "Enterprise",
@@ -55,6 +81,7 @@ const Pricing = () => {
       popular: false,
       cta: "Contact Sales"
     }
+   
   ];
 
   const faqs = [
@@ -116,7 +143,7 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {plans.map((plan, index) => (
               <div
                 key={index}
@@ -124,11 +151,11 @@ const Pricing = () => {
                   plan.popular ? 'ring-2 ring-[#ffbe01] transform scale-105' : ''
                 }`}
               >
-                {plan.popular && (
-                  <div className="bg-[#ffbe01] text-black text-center py-2 font-semibold">
-                    Most Popular
-                  </div>
-                )}
+                 {/* {plan.popular && ( */}
+              {/* //     <div className="bg-[#ffbe01] text-black text-center py-2 font-semibold">
+              //       Most Popular
+              //     </div>
+              //   )} */}
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-black mb-2">{plan.name}</h3>
                   <div className="mb-4">
