@@ -9,10 +9,8 @@ import interiorImg from '../assets/interiorCard.jpg';
 import ownerImg from '../assets/ownerCard.jpg';
 import Time1 from '../assets/Time1.jpg'; // adjust path as needed
 import digital from "../assets/digital.jpg";
-import costoverruns from "../assets/costoverruns.jpg"
-import costmanagement from "../assets/cost management.jpg";
-import image2 from "../assets/2.png";
-import image3 from "../assets/3.png";
+import costoverruns from "../assets/costoverruns.jpg";
+import MobileGif from "../assets/mobile 1.gif";
 
 const Homepage = () => {
   const features = [
@@ -78,11 +76,24 @@ const Homepage = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative text-white py-20 sm:py-28 md:py-36 lg:py-44 xl:py-52 overflow-hidden flex items-center min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh]">
+        {/* Desktop Background Image */}
         <img
           src={heroImg}
           alt="Background"
-          className="absolute inset-0 w-full h-full object-cover object-center sm:object-center md:object-top lg:object-center z-0"
+          className="
+    absolute inset-0 w-full h-full
+    object-cover
+    object-[50%_20%]
+    z-0
+    hidden md:block
+  "
         />
+
+        {/* Mobile Background GIF */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-no-repeat z-0 block md:hidden bg-[position:15%_center]"
+          style={{ backgroundImage: `url(${MobileGif})` }}
+        ></div>
       </section>
 
       {/* Target Audience Section */}

@@ -10,7 +10,7 @@ import timeManagement from "../assets/time-management_8251971.png";
 import cyber from "../assets/cyber-security_10429893.png";
 import engineer from "../assets/engineer_11773950.png";
 import { NavLink } from "react-router-dom";
-
+import StoryGif from '../assets/mobile 2.gif';
 
 const About = () => {
 
@@ -160,22 +160,10 @@ const About = () => {
             </div>
             <div className="relative rounded-lg overflow-hidden shadow-lg">
               <img
-                src={aboutImages.teamCollaboration}
-                alt="Construction team collaborating"
+                src={StoryGif}
+                alt="Our Story"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
-              <div className="absolute inset-0 flex flex-col justify-end p-8 text-white backdrop-blur-[1px]">
-                <h3 className="text-2xl font-bold mb-3">Our Story</h3>
-                <p className="text-gray-100 mb-3">
-                  Born from the frustration of inefficient construction management processes, Vconstech was created by industry veterans
-                  who saw the massive potential for technology to revolutionize the construction industry.
-                </p>
-                <p className="text-gray-100">
-                  Today, we're proud to serve construction professionals nationwide, helping them save time, reduce costs,
-                  and deliver projects with confidence.
-                </p>
-              </div>
             </div>
           </div>
         </div>

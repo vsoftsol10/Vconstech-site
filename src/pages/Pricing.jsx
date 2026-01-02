@@ -16,7 +16,7 @@ const Pricing = () => {
         "Email support",
         "Mobile app access"
       ],
-      popular: false,
+      popular: true,
       cta: "Start Free Trial"
     },
     {
@@ -34,8 +34,8 @@ const Pricing = () => {
         "API access",
         "Custom integrations"
       ],
-      popular: true,
-      cta: "Start Free Trial"
+      popular: false,
+      cta: "Contact Sales"
     },
      {
       name: "Bussiness",

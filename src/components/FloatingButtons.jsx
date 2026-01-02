@@ -92,47 +92,47 @@ const FloatingButtons = () => {
   };
 
   // Handle demo form changes
-const handleDemoFormChange = (e) => {
-  const { name, value } = e.target;
+  const handleDemoFormChange = (e) => {
+    const { name, value } = e.target;
 
-  // Phone: allow only numbers and max 10 digits
-  if (name === "phone") {
-    if (!/^\d*$/.test(value)) return; // blocks alphabets
-    if (value.length > 10) return;    // blocks more than 10 digits
-  }
+    // Phone: allow only numbers and max 10 digits
+    if (name === "phone") {
+      if (!/^\d*$/.test(value)) return; // blocks alphabets
+      if (value.length > 10) return;    // blocks more than 10 digits
+    }
 
-  setDemoForm({
-    ...demoForm,
-    [name]: value
-  });
-};
-const validateDemoForm = () => {
-  let newErrors = {};
+    setDemoForm({
+      ...demoForm,
+      [name]: value
+    });
+  };
+  const validateDemoForm = () => {
+    let newErrors = {};
 
-  // Email validation
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(demoForm.email)) {
-    newErrors.email = "Enter a valid email address with @ and'.com' ";
-  }
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(demoForm.email)) {
+      newErrors.email = "Enter a valid email address with @ and'.com' ";
+    }
 
-  // Phone validation (exactly 10 digits)
-  if (demoForm.phone.length !== 10) {
-    newErrors.phone = "Phone number must be exactly 10 digits";
-  }
-  
+    // Phone validation (exactly 10 digits)
+    if (demoForm.phone.length !== 10) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
 
-  if (demoForm.name.length==0){ newErrors.name = "Name is required";}
-  if (!demoForm.profession) newErrors.profession = "Profession is required";
 
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+    if (demoForm.name.length == 0) { newErrors.name = "Name is required"; }
+    if (!demoForm.profession) newErrors.profession = "Profession is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
 
   // Handle demo form submission
   const handleDemoSubmit = async (e) => {
     e.preventDefault();
 
-   if (!validateDemoForm()) return;
+    if (!validateDemoForm()) return;
 
 
     console.log('Starting demo submission...');
@@ -199,7 +199,7 @@ const validateDemoForm = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-[#ffbe01] text-black p-4 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-50 group"
+          className="fixed bottom-25 right-6 bg-[#ffbe01] text-black p-4 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-50 group"
           aria-label="Scroll to top"
         >
           <svg
@@ -221,7 +221,7 @@ const validateDemoForm = () => {
       {/* Book Demo Floating Button */}
       <button
         onClick={() => setShowDemoModal(true)}
-        className="fixed bottom-6 left-6 bg-black text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 group flex items-center space-x-2"
+        className="fixed bottom-25 left-6 bg-black text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 group flex items-center space-x-2"
         aria-label="Book a demo"
       >
         <svg
@@ -272,69 +272,69 @@ const validateDemoForm = () => {
                   placeholder="John Doe"
                 />
                 {/* Error BELOW input */}
-  {errors.name && (
-    <p className="text-red-500 text-sm mt-1">
-      {errors.name}
-    </p>
-  )}
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.name}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col">
-  <label
-    htmlFor="demo-email"
-    className="block text-sm font-medium text-gray-700 mb-2"
-  >
-    Email Address *
-  </label>
+                <label
+                  htmlFor="demo-email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Email Address *
+                </label>
 
-  <input
-    type="email"
-    id="demo-email"
-    name="email"
-    value={demoForm.email}
-    onChange={handleDemoFormChange}
-    // required
-    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
-    placeholder="john@company.com"
-  />
+                <input
+                  type="email"
+                  id="demo-email"
+                  name="email"
+                  value={demoForm.email}
+                  onChange={handleDemoFormChange}
+                  // required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-[#ffbe01] focus:border-[#ffbe01] transition-colors duration-200"
+                  placeholder="john@company.com"
+                />
 
-  {/* Error BELOW input */}
-  {errors.email && (
-    <p className="text-red-500 text-sm mt-1">
-      {errors.email}
-    </p>
-  )}
-</div>
+                {/* Error BELOW input */}
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email}
+                  </p>
+                )}
+              </div>
 
 
 
-             <div className="flex flex-col">
-  <label htmlFor="demo-phone" className="block text-sm font-medium text-gray-700 mb-2">
-    Phone Number (India) *
-  </label>
+              <div className="flex flex-col">
+                <label htmlFor="demo-phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number (India) *
+                </label>
 
-  <div className="flex">
-    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
-      +91
-    </span>
+                <div className="flex">
+                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
+                    +91
+                  </span>
 
-    <input
-      type="tel"
-      id="demo-phone"
-      name="phone"
-      value={demoForm.phone}
-      onChange={handleDemoFormChange}
-      maxLength={10}
-      // required
-      className="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:ring-[#ffbe01] focus:border-[#ffbe01]"
-      placeholder="10 digit mobile number"
-    />
-  </div>
+                  <input
+                    type="tel"
+                    id="demo-phone"
+                    name="phone"
+                    value={demoForm.phone}
+                    onChange={handleDemoFormChange}
+                    maxLength={10}
+                    // required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-r-md focus:ring-[#ffbe01] focus:border-[#ffbe01]"
+                    placeholder="10 digit mobile number"
+                  />
+                </div>
 
-  {/* ERROR BELOW PHONE INPUT */}
-  {errors.phone && (
-    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-  )}
-</div>
+                {/* ERROR BELOW PHONE INPUT */}
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+              </div>
 
 
               <div>
@@ -358,9 +358,9 @@ const validateDemoForm = () => {
                   <option value="other">Other</option>
                 </select>
                 {/* ERROR BELOW PHONE INPUT */}
-  {errors.profession && (
-    <p className="text-red-500 text-sm mt-1">{errors.profession}</p>
-  )}
+                {errors.profession && (
+                  <p className="text-red-500 text-sm mt-1">{errors.profession}</p>
+                )}
               </div>
 
               <div>
