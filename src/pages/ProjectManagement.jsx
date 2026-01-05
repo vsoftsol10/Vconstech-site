@@ -2,6 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { CheckCircle, Package, Users, DollarSign, FolderOpen, Handshake, TrendingUp, Clock, Calculator, BarChart3, Receipt, Truck } from 'lucide-react';
+// import FloatingButtons from '../components/FloatingButtons.jsx';
+import FloatingButtons from "../components/FloatingButtons";
+
 
 const ProjectManagement = () => {
     const location = useLocation();
@@ -119,61 +122,6 @@ const ProjectManagement = () => {
             reverse: true
         },
         {
-            id: 'file-management',
-            icon: FolderOpen,
-            title: "File Management",
-            description: "Store, organize, and access all project-related documents securely. Keep contracts, drawings, invoices, and reports available anytime, anywhere.",
-            features: [
-                "Centralized document storage",
-                "Secure access control",
-                "Easy file retrieval"
-            ],
-            image: (
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <h4 className="text-xl font-bold text-gray-800 mb-4">Document Vault</h4>
-                    <div className="space-y-3">
-                        {['Building Plans.pdf', 'NOC Certificate.pdf', 'Land Agreement.pdf'].map((doc, i) => (
-                            <div key={i} className="bg-white rounded-lg p-3 flex items-center gap-3">
-                                <FolderOpen className="w-5 h-5 text-purple-600" />
-                                <span className="text-gray-700 text-sm">{doc}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )
-        },
-        {
-            id: 'contractor-management',
-            icon: Handshake,
-            title: "Contractor Management",
-            description: "Manage contractor details, work assignments, and performance efficiently. Improve coordination and accountability across all contractors.",
-            features: [
-                "Contractor profiles & records",
-                "Work tracking",
-                "Performance monitoring"
-            ],
-            image: (
-                <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
-                    <h4 className="text-xl font-bold text-gray-800 mb-4">Contractor Stats</h4>
-                    <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-white rounded-lg p-4 text-center">
-                            <div className="text-2xl font-bold text-green-600">15</div>
-                            <div className="text-xs text-gray-600 mt-1">Active</div>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 text-center">
-                            <div className="text-2xl font-bold text-orange-600">3</div>
-                            <div className="text-xs text-gray-600 mt-1">Pending</div>
-                        </div>
-                        <div className="bg-white rounded-lg p-4 text-center">
-                            <div className="text-2xl font-bold text-blue-600">8</div>
-                            <div className="text-xs text-gray-600 mt-1">Top Rated</div>
-                        </div>
-                    </div>
-                </div>
-            ),
-            reverse: true
-        },
-        {
             id: 'labour-management',
             icon: Users,
             title: "Labour Management",
@@ -205,7 +153,63 @@ const ProjectManagement = () => {
                     </button>
                 </div>
             )
-        }
+        },
+        {
+            id: 'file-management',
+            icon: FolderOpen,
+            title: "File Management",
+            description: "Store, organize, and access all project-related documents securely. Keep contracts, drawings, invoices, and reports available anytime, anywhere.",
+            features: [
+                "Centralized document storage",
+                "Secure access control",
+                "Easy file retrieval"
+            ],
+            image: (
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
+                    <h4 className="text-xl font-bold text-gray-800 mb-4">Document Vault</h4>
+                    <div className="space-y-3">
+                        {['Building Plans.pdf', 'NOC Certificate.pdf', 'Land Agreement.pdf'].map((doc, i) => (
+                            <div key={i} className="bg-white rounded-lg p-3 flex items-center gap-3">
+                                <FolderOpen className="w-5 h-5 text-purple-600" />
+                                <span className="text-gray-700 text-sm">{doc}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ),reverse: true
+        },
+        {
+            id: 'contractor-management',
+            icon: Handshake,
+            title: "Contractor Management",
+            description: "Manage contractor details, work assignments, and performance efficiently. Improve coordination and accountability across all contractors.",
+            features: [
+                "Contractor profiles & records",
+                "Work tracking",
+                "Performance monitoring"
+            ],
+            image: (
+                <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
+                    <h4 className="text-xl font-bold text-gray-800 mb-4">Contractor Stats</h4>
+                    <div className="grid grid-cols-3 gap-3">
+                        <div className="bg-white rounded-lg p-4 text-center">
+                            <div className="text-2xl font-bold text-green-600">15</div>
+                            <div className="text-xs text-gray-600 mt-1">Active</div>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 text-center">
+                            <div className="text-2xl font-bold text-orange-600">3</div>
+                            <div className="text-xs text-gray-600 mt-1">Pending</div>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 text-center">
+                            <div className="text-2xl font-bold text-blue-600">8</div>
+                            <div className="text-xs text-gray-600 mt-1">Top Rated</div>
+                        </div>
+                    </div>
+                </div>
+            ),
+          
+        },
+        
     ];
 
     const data = [
@@ -256,7 +260,7 @@ const ProjectManagement = () => {
                                 Get Started
                             </Link>
 
-                            <Link to="/contact" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-900 transition text-center">
+                            <Link to="/book-demo" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-900 transition text-center">
                                 Request a Demo
                             </Link>
                         </div>
@@ -283,12 +287,21 @@ const ProjectManagement = () => {
                 <div className="max-w-4xl mx-auto text-center px-4">
                     <h2 className="text-4xl font-bold mb-6">Transform your project management, streamline your operations</h2>
                     <div className="flex gap-4 justify-center">
-                        <Link to="/pricing" className="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition">
+                        <Link to="/pricing" className="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-orange-50 transition transition-all transform hover:scale-105">
                             Check Pricing
                         </Link>
-                        <Link to="/contact" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-800 transition">
+                        {/* <Link to="/book-demo" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-800 transition">
                             Request Demo
-                        </Link>
+                        </Link> */}
+                        <button
+              onClick={( ) => {
+                // Dispatch custom event to open demo modal
+                window.dispatchEvent(new CustomEvent('openDemoModal'));
+              }}
+              className="bg-black text-white px-6 sm:px-8 py-3 rounded-md font-semibold text-base sm:text-lg transition-all transform hover:scale-105 "
+            >
+              Schedule Demo
+            </button>
                     </div>
                 </div>
             </div>

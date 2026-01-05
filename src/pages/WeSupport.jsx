@@ -224,9 +224,18 @@ const WeSupport = () => {
               Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </NavLink>
-            <NavLink to="/contact" className="bg-white hover:bg-gray-100 text-black px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 border-2 border-white">
-              Request a Demo
-            </NavLink>
+            <button
+              onClick={() => {
+                // Dispatch custom event to open demo modal
+                window.dispatchEvent(new CustomEvent('openDemoModal'));
+              }}
+              className="bg-white hover:bg-gray-100 text-black px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 border-2 border-white">
+            
+              Schedule Demo
+            </button>
+
+
+            
           </div>
         </div>
       </div>

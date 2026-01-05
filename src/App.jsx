@@ -10,6 +10,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import ProjectManagement from './pages/ProjectManagement';
 import WeSupport from './pages/WeSupport';
+import BookDemo from './pages/BookDemo';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/project-management" element={<ProjectManagement />} />
             <Route path="/we-support" element={<WeSupport />} />
+            <Route path="/book-demo" element={<BookDemo />} />
+
           </Routes>
         </main>
         <Footer />

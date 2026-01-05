@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import welcomeImg from '../assets/welcome.png';
-
+import { useLocation, useNavigate } from "react-router-dom";
 // Initialize EmailJS
 emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
 // Debug function for testing EmailJS - call this from browser console:
 // window.testEmailJS()
 window.testEmailJS = async () => {
+  
+
   console.log('🧪 Testing EmailJS configuration...');
   console.log('Service ID:', EMAILJS_CONFIG.SERVICE_ID);
   console.log('Template ID:', EMAILJS_CONFIG.DEMO_TEMPLATE_ID);
   console.log('Public Key:', EMAILJS_CONFIG.PUBLIC_KEY);
+
+
+  
 
   try {
     const testData = {
@@ -41,6 +46,9 @@ window.testEmailJS = async () => {
 };
 
 const FloatingButtons = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [errors, setErrors] = useState({});
 
   const [isVisible, setIsVisible] = useState(false);
@@ -53,6 +61,8 @@ const FloatingButtons = () => {
     profession: '',
     message: ''
   });
+
+   if (location.pathname === "/book-demo") return null;
 
   // Show button when page is scrolled up to given distance
   const toggleVisibility = () => {
@@ -163,6 +173,7 @@ const FloatingButtons = () => {
       setShowDemoModal(false);
       setShowSuccessModal(true);
       setDemoForm({ name: '', email: '', phone: '', profession: '', message: '' });
+      navigate("/book-demo");
     } catch (error) {
       console.error('❌ Error sending demo request:', error);
       console.log('Full error object:', error);
