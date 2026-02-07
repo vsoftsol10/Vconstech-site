@@ -6,7 +6,7 @@ import reportsImg from '../assets/vconstech-Financialpage.png';
 import mobileImg from '../assets/vconstech-materialManagementPage.png';
 import contractorImg from '../assets/contractorCard.jpg';
 import interiorImg from '../assets/interiorCard.jpg';
-import ownerImg from '../assets/ownerCard.jpg';
+import ownerImg from '../assets/builders-1.jpg';
 import Time1 from '../assets/Time1.jpg'; // adjust path as needed
 import digital from "../assets/digital.jpg";
 import costoverruns from "../assets/costoverruns.jpg";
@@ -127,7 +127,7 @@ const Homepage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
             Powerful Features for Construction Professionals
@@ -197,7 +197,7 @@ const Homepage = () => {
       </section>
 
       {/* Who It's For Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
+      <section className="py-8 sm:py-12 md:py-16 bg-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
