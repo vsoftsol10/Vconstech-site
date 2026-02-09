@@ -19,7 +19,7 @@ const Homepage = () => {
   const features = [
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
@@ -28,7 +28,7 @@ const Homepage = () => {
     },
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
@@ -37,7 +37,7 @@ const Homepage = () => {
     },
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
@@ -46,7 +46,7 @@ const Homepage = () => {
     },
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3v18h18" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 14l3-3 4 4 5-6" />
         </svg>
@@ -57,7 +57,7 @@ const Homepage = () => {
     },
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
@@ -66,7 +66,7 @@ const Homepage = () => {
     },
     {
       icon: (
-        <svg className="w-12 h-12 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-12 h-12 text-[#000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
         </svg>
       ),
@@ -99,38 +99,37 @@ const Homepage = () => {
         ></div>
       </section>
 
- /* Target Audience Section */
-<section className="py-12 sm:py-16 md:py-20 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-12">
-      Designed for Construction Professionals
-    </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {[ownerImg, contractorImg, interiorImg, sketch, woman, project].map((img, i) => (
-        <div key={i} className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
-          <img src={img} alt="" className="w-full h-48 sm:h-56 md:h-64 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex items-center justify-center">
-            <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 p-4 sm:p-6">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ffbe01] mb-2 sm:mb-4">
-                {i === 0 ? "Builders" : i === 1 ? "Design & Planning" : i === 2 ? "Interior & Exterior Works" : i === 3 ? "Engineering & Technical Services" : i === 4 ? "Renovation & Remodeling" : "Project & Support Services"}
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-12">
+            Designed for Construction Professionals
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[ownerImg, contractorImg, interiorImg, sketch, woman, project].map((img, i) => (
+              <div key={i} className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
+                <img src={img} alt="" className="w-full h-48 sm:h-56 md:h-64 object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex items-center justify-center">
+                  <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 p-4 sm:p-6">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ffbe01] mb-2 sm:mb-4">
+                      {i === 0 ? "Builders" : i === 1 ? "Design & Planning" : i === 2 ? "Interior & Exterior Works" : i === 3 ? "Engineering & Technical Services" : i === 4 ? "Renovation & Remodeling" : "Project & Support Services"}
+                    </div>
+                    <div className="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+                      {
+                        i === 0 ? "Civil Contractors, Construction Company, Real Estate Developers, Infrastructure Developers"
+                          : i === 1 ? "Architectural Consultants, Structural Engineers, Planning Consultants, Urban Designer"
+                            : i === 2 ? "Interior Decorators, Turnkey Interiors, Modular Kitchen Designers, False Ceiling Contractors, Exterior Designers"
+                              : i === 3 ? "Electrical Contractors, Plumbing Contractors, HVAC Contractors, Mechanical & Electrical (M&E) Services, Fire & Safety System Contractors,Specialized Construction Services"
+                                : i === 4 ? "Waterproofing Contractors, Flooring Contractors, Painting Contractors, Aluminium & Glass Fabricators, Steel Fabricators"
+                                  : "Project Management Consultants,Quantity Surveyors,Construction Consultants,Site Supervisors,Valuation Engineers"
+                      }
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-                {
-                  i === 0 ? "Civil Contractors,Construction Company,Real Estate Developers,Infrastructure Developers"
-                    : i === 1 ? "Architectural Consultants,Structural Engineers,Planning Consultants,Urban Designer"
-                    : i === 2 ? "Interior Decorators,Turnkey Interiors,Modular Kitchen Designers,False Ceiling Contractors,Exterior Designers"
-                    : i === 3 ? "Electrical Contractors,Plumbing Contractors,HVAC Contractors,Mechanical & Electrical (M&E) Services,Fire & Safety System Contractors,Specialized Construction Services"
-                    : i === 4 ? "Waterproofing Contractors,Flooring Contractors,Painting Contractors,Aluminium & Glass Fabricators,Steel Fabricators"
-                    : "Project Management Consultants,Quantity Surveyors,Construction Consultants,Site Supervisors,Valuation Engineers"
-                }
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Features Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-yellow-200">
@@ -207,7 +206,7 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
-              Who can use <span className="text-[#ffbe01]">Vconstech</span> For?
+              Who can use Vconstech For?
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Built for construction professionals who demand excellence and efficiency in their operations.
@@ -309,10 +308,10 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
-              The <span className="text-[#ffbe01]">Importance</span> of Vconstech for Your Construction Business
+              The Importance of <span className="text-[#ffbe01]">Vconstech</span> for Your Construction Business
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              In today's competitive construction market, efficiency and accuracy are not just advantages—they're necessities.
+              In today's competitive construction market, efficiency and accuracy are not just advantages-they're necessities.
             </p>
           </div>
 
