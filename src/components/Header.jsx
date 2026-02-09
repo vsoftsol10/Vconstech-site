@@ -117,6 +117,12 @@ const Header = () => {
                               <span className="block text-xs text-gray-500 mt-1">Vendor performance & contracts</span>
                             </Link>
                           </li>
+                            <li>
+                            <Link to="/project-management#contractor-management" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                              <span className="font-semibold">Billing Management</span>
+                              <span className="block text-xs text-gray-500 mt-1">Managing invoices and payments</span>
+                            </Link>
+                          </li>
                         </ul>
                       </div>
                     </div>

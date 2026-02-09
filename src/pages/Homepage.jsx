@@ -11,6 +11,9 @@ import Time1 from '../assets/Time1.jpg'; // adjust path as needed
 import digital from "../assets/digital.jpg";
 import costoverruns from "../assets/costoverruns.jpg";
 import MobileGif from "../assets/mobile 1.gif";
+import sketch from "../assets/pointing-sketch.jpg"
+import woman from "../assets/woman-working-as-engineer.jpg"
+import project from "../assets/project.jpg"
 
 const Homepage = () => {
   const features = [
@@ -96,38 +99,41 @@ const Homepage = () => {
         ></div>
       </section>
 
-      {/* Target Audience Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-12">
-            Designed for Construction Professionals
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {[ownerImg, contractorImg, interiorImg].map((img, i) => (
-              <div key={i} className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
-                <img src={img} alt="" className="w-full h-48 sm:h-56 md:h-64 object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex items-center justify-center">
-                  <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 p-4 sm:p-6">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ffbe01] mb-2 sm:mb-4">
-                      {i === 0 ? "Building Developer" : i === 1 ? "Contractor" : "Interior Designer"}
-                    </div>
-                    <div className="text-white text-xs sm:text-sm md:text-base leading-relaxed">
-                      {i === 0
-                        ? "Comprehensive project oversight and financial management solutions"
-                        : i === 1
-                          ? "Streamlined operations, workforce management, and cost control"
-                          : "Creative project management with material tracking and client coordination"}
-                    </div>
-                  </div>
-                </div>
+ /* Target Audience Section */
+<section className="py-12 sm:py-16 md:py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-12">
+      Designed for Construction Professionals
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {[ownerImg, contractorImg, interiorImg, sketch, woman, project].map((img, i) => (
+        <div key={i} className="relative rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer">
+          <img src={img} alt="" className="w-full h-48 sm:h-56 md:h-64 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex items-center justify-center">
+            <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 p-4 sm:p-6">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ffbe01] mb-2 sm:mb-4">
+                {i === 0 ? "Builders" : i === 1 ? "Design & Planning" : i === 2 ? "Interior & Exterior Works" : i === 3 ? "Engineering & Technical Services" : i === 4 ? "Renovation & Remodeling" : "Project & Support Services"}
               </div>
-            ))}
+              <div className="text-white text-xs sm:text-sm md:text-base leading-relaxed">
+                {
+                  i === 0 ? "Civil Contractors,Construction Company,Real Estate Developers,Infrastructure Developers"
+                    : i === 1 ? "Architectural Consultants,Structural Engineers,Planning Consultants,Urban Designer"
+                    : i === 2 ? "Interior Decorators,Turnkey Interiors,Modular Kitchen Designers,False Ceiling Contractors,Exterior Designers"
+                    : i === 3 ? "Electrical Contractors,Plumbing Contractors,HVAC Contractors,Mechanical & Electrical (M&E) Services,Fire & Safety System Contractors,Specialized Construction Services"
+                    : i === 4 ? "Waterproofing Contractors,Flooring Contractors,Painting Contractors,Aluminium & Glass Fabricators,Steel Fabricators"
+                    : "Project Management Consultants,Quantity Surveyors,Construction Consultants,Site Supervisors,Valuation Engineers"
+                }
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Features Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-yellow-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-yellow-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
             Powerful Features for Construction Professionals
@@ -158,22 +164,22 @@ const Homepage = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {/* Card 1 */}
-            <div className="bg-gray-50 p-4 sm:p-6 md:p-8 rounded-lg">
+            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={Time1} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold text-[#ffbe01] mb-2">Project Delays</h3>
+              <h3 className="text-lg sm:text-xl font-bold  mb-2">Project Delays</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Common construction challenge</p>
-              <h4 className="text-base sm:text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
+              <h4 className="text-base sm:text-lg font-semibold  mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
                 Real-time project tracking, automated progress updates, and intelligent scheduling prevent delays and ensure projects stay on track with 98% on-time delivery rate.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-gray-50 p-4 sm:p-6 md:p-8 rounded-lg">
+            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={costoverruns} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto h-fit transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold text-[#ffbe01] mb-2 ">Cost Overruns</h3>
+              <h3 className="text-lg sm:text-xl font-bold  mb-2 ">Cost Overruns</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Budget management nightmare</p>
-              <h4 className="text-base sm:text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
+              <h4 className="text-base sm:text-lg font-semibold  mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
                 Advanced cost tracking, budget forecasting, and material cost optimization
                 help you stay within budget and maximize profitability on every project.
@@ -181,11 +187,11 @@ const Homepage = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-gray-50 p-4 sm:p-6 md:p-8 rounded-lg">
+            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={digital} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-semibold text-[#ffbe01] mb-2">Manual Paperwork</h3>
+              <h3 className="text-lg sm:text-xl font-bold  mb-2">Manual Paperwork</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Time-consuming documentation</p>
-              <h4 className="text-base sm:text-lg font-semibold text-[#ffbe01] mb-2">Vconstech Solution</h4>
+              <h4 className="text-base sm:text-lg font-semibold  mb-2">Vconstech Solution</h4>
               <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
                 Digital documentation, automated reporting, and cloud-based file management
                 eliminate paperwork hassles and ensure compliance with industry standards.
@@ -197,7 +203,7 @@ const Homepage = () => {
       </section>
 
       {/* Who It's For Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-yellow-50">
+      <section className="py-8 sm:py-12 md:py-16 bg-yellow-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">

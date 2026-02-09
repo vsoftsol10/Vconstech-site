@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { CheckCircle, Package, Users, DollarSign, FolderOpen, Handshake, TrendingUp, Clock, Calculator, BarChart3, Receipt, Truck } from 'lucide-react';
+import { CheckCircle, Package, Users, DollarSign, FolderOpen, Handshake, TrendingUp, Clock, Calculator, BarChart3, Receipt, Truck,Dock } from 'lucide-react';
 // import FloatingButtons from '../components/FloatingButtons.jsx';
 import FloatingButtons from "../components/FloatingButtons";
 
@@ -209,6 +209,58 @@ const ProjectManagement = () => {
             ),
           
         },
+        {
+    id: 'billing-management',
+    icon: Dock, // or Receipt, CreditCard - choose appropriate icon
+    title: "Billing Management",
+    description: "Streamline invoicing, track payments, and manage billing cycles effortlessly. Keep your cash flow healthy with automated billing reminders and detailed payment records.",
+    features: [
+        "Automated invoice generation",
+        "Payment tracking & reminders",
+        "Billing history & reports"
+    ],
+    image: (
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
+            <h4 className="text-xl font-bold text-gray-800 mb-4">Recent Invoices</h4>
+            <div className="space-y-3">
+                <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-gray-800">INV-2024-001</span>
+                        <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">Paid</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                        <span className="text-gray-600">Client: ABC Corp</span>
+                        <span className="font-bold text-gray-800">₹2,50,000</span>
+                    </div>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-orange-500">
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-gray-800">INV-2024-002</span>
+                        <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full font-medium">Pending</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                        <span className="text-gray-600">Client: XYZ Ltd</span>
+                        <span className="font-bold text-gray-800">₹1,75,000</span>
+                    </div>
+                </div>
+                <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="font-semibold text-gray-800">INV-2024-003</span>
+                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-medium">Draft</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                        <span className="text-gray-600">Client: PQR Inc</span>
+                        <span className="font-bold text-gray-800">₹3,00,000</span>
+                    </div>
+                </div>
+            </div>
+            <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                Create Invoice
+            </button>
+        </div>
+    ),
+    reverse: true 
+}
         
     ];
 
