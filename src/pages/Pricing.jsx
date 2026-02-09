@@ -4,84 +4,55 @@ import pricingHeroVideo from '../assets/pricing-hero.mp4';
 const Pricing = () => {
   const plans = [
     {
-      name: "Starter",
-      price: "₹9,999",
-      period: "per year",
-      description: "Perfect for small construction teams and individual contractors.",
+      name: "Basic",
+      price: "₹2,500",
+      period: "per month",
+      description:
+        "Best for small teams and site engineers starting with digital project management.",
       features: [
-        "Up to 5 active projects",
+        "Up to 3 users (Site Engineers)",
+        "Desktop access only",
         "Basic project management",
-        "Time tracking",
-        "Basic reporting",
-        "Email support",
-        "Mobile app access"
+        "Piling management",
+        "Email support"
       ],
       popular: true,
-      cta: "Start Free Trial"
+      cta: "Get Started"
     },
     {
-      name: "Professional",
-      price: "₹19,999",
-      period: "per year",
-      description: "Ideal for growing construction companies and development firms.",
+      name: "Premium",
+      price: "₹3,500",
+      period: "per month",
+      description:
+        "Ideal for growing construction teams needing multi-device access and billing support.",
       features: [
-        "Up to 25 active projects",
+        "5 to 10 users",
+        "Desktop, Mobile & Tablet access",
         "Advanced project management",
-        "Cost tracking & budgeting",
-        "Team collaboration tools",
-        "Advanced analytics",
-        "Priority support",
-        "API access",
-        "Custom integrations"
+        "Piling management",
+        "Billing & invoicing",
+        "Email support"
       ],
       popular: false,
-      cta: "Contact Sales"
-    },
-     {
-      name: "Bussiness",
-      price: "₹34,999",
-      period: "per year",
-      description:"Ideal for builders and mid-size construction firms to manage work easily.",
-      features: [
-        
-        "All Professional features",
-
-"Labour management tools",
-
-"Advanced reports ",
-
-"Project scheduling & timeline management",
-
-"Resource allocation & tracking",
-
-"Cost estimation & budgeting tools",
-
-"Document management",
-
-"Team collaboration & communication tools"
-      ],
-      popular: false,
-      cta: "Contact Sales"
+      cta: "Get Started"
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "contact us",
-      description: "Tailored solutions for large construction companies and enterprise clients.",
+      name: "Custom",
+      // price: "₹1,000",
+      period: "per user / month",
+      description:
+        "Fully customizable plan based on your business needs with premium features.",
       features: [
-        "Unlimited projects",
-        "All Professional features",
-        "Custom workflows",
-        "Dedicated account manager",
-        "24/7 phone support",
-        "On-premise deployment option",
-        "Advanced security",
-        "Custom training"
+        "Custom number of users",
+        "₹1,000 per additional user",
+        "Desktop, Mobile & Tablet access",
+        "All Premium features",
+        "Custom configurations",
+        "Priority email support"
       ],
       popular: false,
       cta: "Contact Sales"
     }
-   
   ];
 
   const faqs = [
@@ -143,16 +114,15 @@ const Pricing = () => {
       {/* Pricing Cards */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-lg shadow-lg overflow-hidden ${
-                  plan.popular ? 'ring-2 ring-[#ffbe01] transform scale-105' : ''
-                }`}
+                className={`bg-white rounded-lg shadow-lg overflow-hidden ${plan.popular ? 'ring-2 ring-[#ffbe01] transform scale-105' : ''
+                  }`}
               >
-                 {/* {plan.popular && ( */}
-              {/* //     <div className="bg-[#ffbe01] text-black text-center py-2 font-semibold">
+                {/* {plan.popular && ( */}
+                {/* //     <div className="bg-[#ffbe01] text-black text-center py-2 font-semibold">
               //       Most Popular
               //     </div>
               //   )} */}
@@ -168,7 +138,7 @@ const Pricing = () => {
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
                         <svg className="w-5 h-5 text-[#ffbe01] mr-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                         <span className="text-gray-700">{feature}</span>
                       </li>
@@ -177,11 +147,10 @@ const Pricing = () => {
 
                   <Link
                     to={plan.name === "Enterprise" ? "/contact" : "/contact"}
-                    className={`block text-center py-3 px-6 rounded-md font-semibold transition-colors duration-200 ${
-                      plan.popular
+                    className={`block text-center py-3 px-6 rounded-md font-semibold transition-colors duration-200 ${plan.popular
                         ? 'bg-[#ffbe01] text-black hover:bg-yellow-400'
                         : 'bg-black text-white hover:bg-gray-800'
-                    }`}
+                      }`}
                   >
                     {plan.cta}
                   </Link>
@@ -193,7 +162,7 @@ const Pricing = () => {
       </section>
 
       {/* Features Comparison */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-yellow-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
@@ -206,8 +175,8 @@ const Pricing = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-[#ffbe01] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -216,18 +185,18 @@ const Pricing = () => {
             </div>
 
             <div className="text-center">
-              <div className="bg-[#ffbe01] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-black mb-2">Secure & Reliable</h3>
               <p className="text-gray-600">Enterprise-grade security with 99.9% uptime guarantee for your critical data.</p>
             </div>
-
+  
             <div className="text-center">
-              <div className="bg-[#ffbe01] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -239,7 +208,7 @@ const Pricing = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
