@@ -5,6 +5,10 @@ import builders from '../assets/builders-1.jpg';
 import contractors from '../assets/contractors-1.jpg';
 import engineers from '../assets/site-engg-1.jpg';
 import designers from '../assets/interior-1.jpg';
+import Exteriors from '../assets/Interior&ExteriorWorks.jpg';
+import Architect from '../assets/Engineering&TechnicalServices.jpg';
+import Renovation from '../assets/Renovation&Remodeling.jpg';
+import Product from '../assets/Project & Support Services.jpg';
 
 const WeSupport = () => {
   const location = useLocation();
@@ -42,68 +46,102 @@ const WeSupport = () => {
       id: 'builders',
       title: 'Builders',
       challenges: [
-        'Lack of real-time project visibility',
+        'Lack of real-time project visibility across multiple sites',
         'Cost overruns and delayed timelines',
-        'Multiple projects difficult to monitor'
+        'Difficulty tracking materials and billing'
       ],
       solutions: [
-        'Centralized dashboard for all projects',
-        'Live cost, progress, and material tracking',
-        'Clear insights for better decision-making'
+        'Project live status dashboard for real-time visibility',
+        'Integrated billing and financial management',
+        'Material management with automated tracking'
       ],
-      result: 'Better control, predictable outcomes, and on-time delivery.',
+      result: 'Complete project control, predictable outcomes, and on-time delivery.',
       image: builders,
       reverse: false
     },
     {
-      id: 'contractors',
-      title: 'Contractors',
+      id: 'design-planning',
+      title: 'Design & Planning',
       challenges: [
-        'Manual tracking of materials and labour',
-        'Payment delays and expense confusion',
-        'Poor coordination between teams'
+        'Design files scattered across different platforms',
+        'Client approvals and revisions poorly documented',
+        'No clear link between design and project budget'
       ],
       solutions: [
-        'Automated material and labour management',
-        'Clear financial tracking and reports',
-        'Organized contractor and task management'
+        'Centralized file management for all design documents',
+        'Project management tools for tracking approvals',
+        'Financial management linked to design scope'
       ],
-      result: 'Smooth site operations and reduced daily stress.',
-      image: contractors,
+      result: 'Streamlined design workflow and better budget alignment.',
+      image: designers,
       reverse: true
     },
     {
-      id: 'engineers',
-      title: 'Site Engineers',
+      id: 'interior-exterior',
+      title: 'Interior & Exterior Works',
       challenges: [
-        'Difficulty reporting daily site progress',
-        'Untracked material usage',
-        'Communication gaps with office teams'
+        'Budget vs execution tracking is manual and error-prone',
+        'Material procurement and inventory management gaps',
+        'Billing and payment delays with vendors'
       ],
       solutions: [
-        'Easy daily reports and live site updates',
-        'Real-time material and workforce tracking',
-        'Instant data sync with management'
+        'Material management for procurement and stock control',
+        'Financial management with automated billing',
+        'Project live status for execution tracking'
       ],
-      result: 'Faster reporting and better site coordination.',
-      image: engineers,
+      result: 'Accurate budgets, timely deliveries, and happier clients.',
+      image: Exteriors,
       reverse: false
     },
     {
-      id: 'designers',
-      title: 'Interior Designers',
+      id: 'engineering-technical',
+      title: 'Engineering & Technical Services',
       challenges: [
-        'Design changes not properly tracked',
-        'Client approvals taking too long',
-        'Budget and execution mismatch'
+        'Daily progress reporting is time-consuming',
+        'Technical documents and drawings hard to access on-site',
+        'Material usage and wastage not properly tracked'
       ],
       solutions: [
-        'Organized file and design version management',
-        'Easy client approvals and documentation',
-        'Budget tracking aligned with execution'
+        'Project management with easy daily reporting',
+        'File management for instant access to technical docs',
+        'Material management with real-time usage tracking'
       ],
-      result: 'Happier clients and smoother project delivery.',
-      image: designers,
+      result: 'Faster reporting, better documentation, and improved efficiency.',
+      image: Architect,
+      reverse: true
+    },
+    {
+      id: 'renovation-remodeling',
+      title: 'Renovation & Remodeling',
+      challenges: [
+        'Scope changes and variation orders create billing confusion',
+        'Before/after documentation is incomplete',
+        'Financial tracking becomes chaotic with changes'
+      ],
+      solutions: [
+        'Billing management with flexible variation tracking',
+        'File management for comprehensive documentation',
+        'Financial management for clear cost control'
+      ],
+      result: 'Controlled scope changes and transparent client billing.',
+      image: Renovation,
+      reverse: false
+    },
+    {
+      id: 'project-support',
+      title: 'Project & Support Services',
+      challenges: [
+        'Manual labor and contractor payment tracking',
+        'Expense reports and receipts are disorganized',
+        'Poor coordination between office and site teams'
+      ],
+      solutions: [
+        'Billing management with automated payroll and invoicing',
+        'Financial management for expense tracking and reporting',
+        'Project live status for team coordination'
+      ],
+      result: 'Efficient operations, on-time payments, and reduced administrative burden.',
+      image: Product,
       reverse: true
     }
   ];
@@ -117,7 +155,7 @@ const WeSupport = () => {
         <div className="flex-1 space-y-6">
           {/* Title */}
           <div className="flex items-center gap-3">
-            <span className="text-5xl">{emoji}</span>
+            {emoji && <span className="text-5xl">{emoji}</span>}
             <h3 className="text-4xl font-bold text-gray-900">{title}</h3>
           </div>
 
@@ -187,13 +225,13 @@ const WeSupport = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
             <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight">
-              People We Support
+              Services We Support
             </h1>
             <p className="text-2xl font-semibold max-w-4xl mx-auto">
-              Built for Every Role on the Project Site
+              Comprehensive Solutions for Every Construction Need
             </p>
             <p className="text-lg max-w-3xl mx-auto text-gray-900">
-              From planning to execution, our platform solves real-world challenges faced by construction and interior professionals helping them work smarter, faster, and with complete control.
+              Our comprehensive ERP platform brings together project management, billing management, material management, financial tracking, file management, and live project status—all in one unified system to help construction teams deliver projects on time and within budget.
             </p>
           </div>
         </div>
@@ -212,11 +250,11 @@ const WeSupport = () => {
       <div className="bg-yellow-500 text-black py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
-            One Platform. Built for Every Professional on Site.
+            One Platform. Complete Service Coverage.
           </h2>
           
           <p className="text-xl max-w-2xl mx-auto">
-            Whether you manage, execute, or design, we help you stay in control at every stage.
+            Whether you build, design, or manage, we provide the tools you need to deliver excellence at every stage.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -230,12 +268,8 @@ const WeSupport = () => {
                 window.dispatchEvent(new CustomEvent('openDemoModal'));
               }}
               className="bg-white hover:bg-gray-100 text-black px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 border-2 border-white">
-            
               Schedule Demo
             </button>
-
-
-            
           </div>
         </div>
       </div>

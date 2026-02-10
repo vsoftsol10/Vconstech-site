@@ -111,7 +111,7 @@ const Homepage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 flex items-center justify-center">
                   <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 p-4 sm:p-6">
                     <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ffbe01] mb-2 sm:mb-4">
-                      {i === 0 ? "Builders" : i === 1 ? "Design & Planning" : i === 2 ? "Interior & Exterior Works" : i === 3 ? "Engineering & Technical Services" : i === 4 ? "Renovation & Remodeling" : "Project & Support Services"}
+                      {i === 0 ? "Builders" : i === 1 ? "Design & Planning" : i === 2 ? "Interio  r & Exterior Works" : i === 3 ? "Engineering & Technical Services" : i === 4 ? "Renovation & Remodeling" : "Project & Support Services"}
                     </div>
                     <div className="text-white text-xs sm:text-sm md:text-base leading-relaxed">
                       {

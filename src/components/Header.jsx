@@ -117,7 +117,7 @@ const Header = () => {
                               <span className="block text-xs text-gray-500 mt-1">Vendor performance & contracts</span>
                             </Link>
                           </li>
-                            <li>
+                          <li>
                             <Link to="/project-management#contractor-management" className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
                               <span className="font-semibold">Billing Management</span>
                               <span className="block text-xs text-gray-500 mt-1">Managing invoices and payments</span>
@@ -152,14 +152,20 @@ const Header = () => {
                   <Link to="/we-support#builders" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
                     Builders
                   </Link>
-                  <Link to="/we-support#contractors" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Contractors
+                  <Link to="/we-support#design-planning" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Design & Planning
                   </Link>
-                  <Link to="/we-support#engineers" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Site Engineers
+                  <Link to="/we-support#interior-exterior" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Interior & Exterior Works
                   </Link>
-                  <Link to="/we-support#designers" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Interior Designers
+                  <Link to="/we-support#engineering-technical" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Engineering & Technical Services
+                  </Link>
+                  <Link to="/we-support#renovation-remodeling" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Renovation & Remodeling
+                  </Link>
+                  <Link to="/we-support#project-support" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Project & Support Services
                   </Link>
                 </div>
               )}

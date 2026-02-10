@@ -173,7 +173,6 @@ const FloatingButtons = () => {
       setShowDemoModal(false);
       setShowSuccessModal(true);
       setDemoForm({ name: '', email: '', phone: '', profession: '', message: '' });
-      navigate("/book-demo");
     } catch (error) {
       console.error('❌ Error sending demo request:', error);
       console.log('Full error object:', error);
