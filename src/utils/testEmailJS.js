@@ -24,7 +24,7 @@ export const testEmailJS = async () => {
 
     const result = await emailjs.send(
       EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATE_ID,
+      EMAILJS_CONFIG.ADMIN_NOTIFICATION_TEMPLATE_ID,
       testParams,
       EMAILJS_CONFIG.PUBLIC_KEY
     );

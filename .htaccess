@@ -3,11 +3,20 @@
 RewriteEngine On
 
 # Handle client-side routing - redirect all requests to index.html except existing files
+# React SPA Routing Fix
+<IfModule mod_rewrite.c>
+RewriteEngine On
 RewriteBase /
-RewriteRule ^index\.html$ - [L]
+
+# If request is not a file
 RewriteCond %{REQUEST_FILENAME} !-f
+
+# If request is not a directory
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+
+# Redirect everything to index.html
+RewriteRule ^ index.html [L]
+</IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
@@ -97,7 +106,7 @@ RewriteRule . /index.html [L]
 </Files>
 
 # Handle 404 errors gracefully
-ErrorDocument 404 /index.html
+# ErrorDocument 404 /index.html
 
 # Force HTTPS (uncomment when SSL is enabled)
 # RewriteCond %{HTTPS} off

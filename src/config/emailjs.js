@@ -2,21 +2,13 @@
 // Replace these values with your actual EmailJS credentials
 
 export const EMAILJS_CONFIG = {
-  // Direct credentials for testing - replace with your actual values
-  SERVICE_ID: 'service_lffy5z8',
-  DEMO_TEMPLATE_ID: 'template_l7iea6q',      // For demo booking modal
-  CONTACT_TEMPLATE_ID: 'template_pg7ogpb',  // For contact page form
-  PUBLIC_KEY: 'tpNU42sxp3WhjZDdz'
+  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_q599twq',
+  CUSTOMER_REPLY_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_CUSTOMER_REPLY_TEMPLATE_ID || 'template_3jy2zbf',
+  ADMIN_NOTIFICATION_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_ADMIN_NOTIFICATION_TEMPLATE_ID || 'template_lsvud2q',
+  CONTACT_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID || 'template_lsvud2q',
+  PAYMENT_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_PAYMENT_TEMPLATE_ID || 'your_payment_template_id',
+  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'u1VtE8xU_DvxQcjM3'
 };
-
-// Alternative: Use environment variables (uncomment below and create .env file)
-/*
-export const EMAILJS_CONFIG = {
-  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-};
-*/
 
 // EmailJS Template Variables for Demo Requests:
 // customer_name: Customer's full name

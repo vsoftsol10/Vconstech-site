@@ -2,6 +2,7 @@ import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import contactHero from '../assets/contact-hero.mp4';
+import ContactImg from '../assets/contact-img.jpeg';
 
 const Contact = () => {
   const [errors, setErrors] = useState({});
@@ -14,6 +15,11 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const adminRecipientEmail = EMAILJS_CONFIG.ADMIN_EMAIL || 'info@thevsoft.com';
+
 
  const handleChange = (e) => {
   const { name, value } = e.target;
@@ -69,19 +75,56 @@ const validateForm = () => {
         contact_subject: formData.subject,
         customer_message: formData.message,
         contact_date: new Date().toLocaleDateString(),
-        contact_type: 'Demo Booking Request'
+        contact_type: 'Demo Booking Request',
+        to_name: 'Vconstech Team',
+        to_email: 'vconstecherp@gmail.com'
       };
 
-      console.log('Sending contact email with params:', templateParams);
+      console.log('Sending admin notification email with params:', templateParams);
 
-      const result = await emailjs.send(
+      // Send admin notification
+      const adminResult = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.CONTACT_TEMPLATE_ID,
         templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      console.log('Contact email sent successfully:', result);
+      console.log('Admin email sent successfully:', adminResult);
+
+      // Send auto reply to user (only when user email is valid and non-empty)
+      if (isValidEmail(formData.email)) {
+        const userReplyParams = {
+          to_name: formData.name,
+          to_email: formData.email,        // ✅ EmailJS uses this to send the email
+        
+          // Match your template's {{name}}, {{subject}}, {{message}} variables
+          name: formData.name,             // ✅ for {{name}} in template
+          subject: formData.subject,       // ✅ for {{subject}} in template  
+          message: formData.message,       // ✅ for {{message}} in template
+        
+          // Keep these too (extra context, harmless)
+          customer_name: formData.name,
+          customer_email: formData.email,
+          customer_company: formData.company || 'Not provided',
+          customer_phone: formData.phone || 'Not provided',
+          contact_subject: formData.subject,
+          customer_message: formData.message,
+          contact_date: new Date().toLocaleDateString(),
+        };
+
+        const userResult = await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.CUSTOMER_REPLY_TEMPLATE_ID,
+          userReplyParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+
+        console.log('User auto reply sent successfully:', userResult);
+      } else {
+        console.warn('Skipping user auto reply because user email is invalid or empty:', formData.email);
+      }
+
       alert('Thank you for your message! We\'ll get back to you within 24 hours.');
 
       // Reset form
@@ -109,6 +152,8 @@ const validateForm = () => {
         errorMessage = '❌ Email template not found. Please contact support.';
       } else if (error?.text?.includes('Invalid user id')) {
         errorMessage = '❌ Invalid email configuration. Please contact support.';
+      } else if (error?.text?.includes('The recipients address is empty')) {
+        errorMessage = '❌ Email error: recipient address is missing. Check your template variables to ensure to_email is set.';
       } else if (error?.text?.includes('rate limit')) {
         errorMessage = '⏰ Too many requests. Please try again in a few minutes.';
       } else if (!navigator.onLine) {
@@ -139,7 +184,7 @@ const validateForm = () => {
         </svg>
       ),
       title: "Email",
-      details: ["info@thevsoft.com"],
+      details: ["vconstecherp@gmail.com"],
       description: "We respond within 24 hours"
     },
     {
@@ -150,7 +195,7 @@ const validateForm = () => {
         </svg>
       ),
       title: "Office",
-      details: ["Upstair, Kotak Mahindra Bank,", "Lakshmi Complex, Anbunagar Extension", "Vannarapettai, Tirunelveli.", "Tamilnadu - 627002, India."],
+      details: ["Vannarapettai, Tirunelveli.", "Tamilnadu - 627002, India."],
       description: "Visit us for a demo"
     }
   ];
@@ -192,7 +237,7 @@ const validateForm = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-black mb-6">Get In Touch</h2>
+              <h2 className="text-3xl font-bold text-black mb-6">Get Demo</h2>
               <p className="text-gray-600 mb-8">
                 Fill out the form below and we'll get back to you within 24 hours.
               </p>
@@ -323,34 +368,67 @@ const validateForm = () => {
               </form>
             </div>
 
-            {/* Contact Information */}
+            {/* Contact Information - Right side: image only */}
             <div>
-              <h2 className="text-3xl font-bold text-black mb-6">Contact Information</h2>
-              <p className="text-gray-600 mb-8">
-                Prefer to reach out directly? Here are our contact details and office information.
-              </p>
+              <div className="sticky top-8">
+                <img src={ContactImg} alt="Contact" className="w-full h-auto rounded-md" />
+              </div>
+            </div>
+          </div>
 
-              <div className="space-y-8">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0 mr-4">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-black mb-1">
-                        {info.title}
-                      </h3>
-                      {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-700 font-medium">
-                          {detail}
-                        </p>
-                      ))}
-                      <p className="text-gray-600 text-sm mt-1">
-                        {info.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+          {/* 4-Column Contact Info Bar */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-gray-200 pt-12">
+            
+            {/* Col 1: Heading */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl font-bold text-black leading-tight">
+                Contact <span className="text-[#ffbe01]">Information</span>
+              </h2>
+              <p className="text-gray-500 text-sm mt-3">
+                Prefer to reach out directly? Here are our details.
+              </p>
+            </div>
+
+            {/* Col 2: Phone */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#ffbe01]/10 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone</h3>
+                <p className="text-gray-800 font-semibold">+91 90954 22237</p>
+                <p className="text-gray-500 text-sm mt-1">Available 24/7</p>
+              </div>
+            </div>
+
+            {/* Col 3: Email */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#ffbe01]/10 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Email</h3>
+                <p className="text-gray-800 font-semibold break-all">vconstecherp@gmail.com</p>
+                <p className="text-gray-500 text-sm mt-1">Reply within 24 hours</p>
+              </div>
+            </div>
+
+            {/* Col 4: Address */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-[#ffbe01]/10 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-[#ffbe01]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Office</h3>
+                <p className="text-gray-800 font-semibold">Vannarapettai, Tirunelveli.</p>
+                <p className="text-gray-800 font-semibold">Tamilnadu - 627002, India.</p>
               </div>
             </div>
           </div>

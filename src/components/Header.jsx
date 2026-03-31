@@ -47,19 +47,59 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6 items-center">
-            <Link
+            {/* <Link
               to="/"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               Home
-            </Link>
+            </Link> */}
 
-            <Link
+            {/* <Link
               to="/about"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               About Us
-            </Link>
+            </Link> */}
+
+            {/* People We Support Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setPeopleWeSupportOpen(true)}
+              onMouseLeave={() => setPeopleWeSupportOpen(false)}
+            >
+              <button className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200 flex items-center">
+                People We Support
+                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {peopleWeSupportOpen && (
+                <div
+                  className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                  onMouseEnter={() => setPeopleWeSupportOpen(true)}
+                  onMouseLeave={() => setPeopleWeSupportOpen(false)}
+                >
+                  <Link to="/we-support#builders" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Builders
+                  </Link>
+                  <Link to="/we-support#design-planning" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Design & Planning
+                  </Link>
+                  <Link to="/we-support#interior-exterior" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Interior & Exterior Works
+                  </Link>
+                  <Link to="/we-support#engineering-technical" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Engineering & Technical Services
+                  </Link>
+                  <Link to="/we-support#renovation-remodeling" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Renovation & Remodeling
+                  </Link>
+                  <Link to="/we-support#project-support" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                    Project & Support Services
+                  </Link>
+                </div>
+              )}
+            </div>
 
             {/* Solution For Dropdown */}
             <div
@@ -131,58 +171,18 @@ const Header = () => {
               )}
             </div>
 
-            {/* People We Support Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setPeopleWeSupportOpen(true)}
-              onMouseLeave={() => setPeopleWeSupportOpen(false)}
-            >
-              <button className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200 flex items-center">
-                People We Support
-                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {peopleWeSupportOpen && (
-                <div
-                  className="absolute top-full left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
-                  onMouseEnter={() => setPeopleWeSupportOpen(true)}
-                  onMouseLeave={() => setPeopleWeSupportOpen(false)}
-                >
-                  <Link to="/we-support#builders" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Builders
-                  </Link>
-                  <Link to="/we-support#design-planning" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Design & Planning
-                  </Link>
-                  <Link to="/we-support#interior-exterior" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Interior & Exterior Works
-                  </Link>
-                  <Link to="/we-support#engineering-technical" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Engineering & Technical Services
-                  </Link>
-                  <Link to="/we-support#renovation-remodeling" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Renovation & Remodeling
-                  </Link>
-                  <Link to="/we-support#project-support" className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
-                    Project & Support Services
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <Link
               to="/pricing"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               Pricing
             </Link>
-            <Link
+            {/* <Link
               to="/blog"
               className="text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
             >
               Blog
-            </Link>
+            </Link> */}
           </nav>
 
           {/* CTA Button */}
@@ -216,13 +216,13 @@ const Header = () => {
         {isOpen && (
           <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <Link
+              {/* <Link
                 to="/"
                 className="block px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
                 onClick={closeMenu}
               >
                 Home
-              </Link>
+              </Link> */}
 
               {/* Solution For Mobile */}
               <div>
@@ -240,40 +240,56 @@ const Header = () => {
                     <div className="mb-2">
                       <h4 className="text-xs font-bold text-gray-900 uppercase mb-2">PROJECT MANAGEMENT</h4>
                       <div className="space-y-1">
-                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                        <Link to="/project-management#material-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
                           <span className="font-semibold">Material Management</span>
                           <span className="block text-xs text-gray-500">
                             Track material usage, stock levels, and procurement efficiently
                           </span>
                         </Link>
 
-                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                        <Link to="/project-management#financial-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
                           <span className="font-semibold">Financial Management</span>
                           <span className="block text-xs text-gray-500">
                             Monitor expenses, budgets, and project-wise financials
                           </span>
                         </Link>
 
-                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                        <Link to="/project-management#file-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
                           <span className="font-semibold">File Management</span>
                           <span className="block text-xs text-gray-500">
                             Store, organize, and share project documents securely
                           </span>
                         </Link>
 
-                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                        <Link to="/project-management#contractor-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
                           <span className="font-semibold">Contractor Management</span>
                           <span className="block text-xs text-gray-500">
                             Manage contractor details, tasks, and performance tracking
                           </span>
                         </Link>
 
-                        <Link to="#" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
+                        <Link to="/project-management#labour-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] rounded">
                           <span className="font-semibold">Labour Management</span>
                           <span className="block text-xs text-gray-500">
                             Track attendance, workforce allocation, and productivity
                           </span>
                         </Link>
+
+                        <Link to="/project-management#file-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                          <span className="font-semibold">File Management</span>
+                          <span className="block text-xs text-gray-500 mt-1">Document organization & sharing</span>
+                        </Link>
+
+                        <Link to="/project-management#contractor-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                          <span className="font-semibold">Contractor Management</span>
+                          <span className="block text-xs text-gray-500 mt-1">Vendor performance & contracts</span>
+                        </Link>
+
+                        <Link to="/project-management#contractor-management" onClick={closeMenu} className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] rounded transition-colors">
+                          <span className="font-semibold">Billing Management</span>
+                          <span className="block text-xs text-gray-500 mt-1">Managing invoices and payments</span>
+                        </Link>
+
                       </div>
                     </div>
                   </div>
@@ -293,29 +309,35 @@ const Header = () => {
                 </button>
                 {mobilePeopleOpen && (
                   <div className="pl-6 pr-3 py-2 space-y-1 bg-gray-50">
-                    <Link to="/we-support#builders" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
+                    <Link to="/we-support#builders" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
                       Builders
                     </Link>
-                    <Link to="/we-support#contractors" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
-                      Contractors
+                    <Link to="/we-support#design-planning" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                      Design & Planning
                     </Link>
-                    <Link to="/we-support#engineers" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
-                      Site Engineers
+                    <Link to="/we-support#interior-exterior" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                      Interior & Exterior Works
                     </Link>
-                    <Link to="/we-support#designers" className="block px-3 py-2 text-sm text-gray-700 hover:text-[#ffbe01] font-medium" onClick={closeMenu}>
-                      Interior Designers
+                    <Link to="/we-support#engineering-technical" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                      Engineering & Technical Services
+                    </Link>
+                    <Link to="/we-support#renovation-remodeling" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                      Renovation & Remodeling
+                    </Link>
+                    <Link to="/we-support#project-support" onClick={closeMenu} className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#ffbe01] font-medium transition-colors">
+                      Project & Support Services
                     </Link>
                   </div>
                 )}
               </div>
 
-              <Link
+              {/* <Link
                 to="/about"
                 className="block px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
                 onClick={closeMenu}
               >
                 About Us
-              </Link>
+              </Link> */}
               <Link
                 to="/pricing"
                 className="block px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
@@ -323,13 +345,13 @@ const Header = () => {
               >
                 Pricing
               </Link>
-              <Link
+              {/* <Link
                 to="/blog"
                 className="block px-3 py-2 text-gray-700 hover:text-[#ffbe01] font-medium transition-colors duration-200"
                 onClick={closeMenu}
               >
                 Blog
-              </Link>
+              </Link> */}
               <div className="px-3 py-2">
                 <Link
                   to="/contact"

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import builders from '../assets/builders-1.jpg';
-import contractors from '../assets/contractors-1.jpg';
-import engineers from '../assets/site-engg-1.jpg';
 import designers from '../assets/interior-1.jpg';
 import Exteriors from '../assets/Interior&ExteriorWorks.jpg';
 import Architect from '../assets/Engineering&TechnicalServices.jpg';

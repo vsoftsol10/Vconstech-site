@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { CheckCircle, Package, Users, DollarSign, FolderOpen, Handshake, TrendingUp, Clock, Calculator, BarChart3, Receipt, Truck,Dock } from 'lucide-react';
 // import FloatingButtons from '../components/FloatingButtons.jsx';
 import FloatingButtons from "../components/FloatingButtons";
@@ -8,7 +8,6 @@ import FloatingButtons from "../components/FloatingButtons";
 
 const ProjectManagement = () => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (location.hash) {
@@ -35,13 +34,15 @@ const ProjectManagement = () => {
         }
     }, [location]);
 
-    const ProductCard = ({ icon: Icon, title, description, features, buttonText, image, reverse = false }) => {
+    const ProductCard = ({ icon: IconComponent, title, description, features, image, reverse = false }) => {
+        // `no-unused-vars` doesn't always recognize JSX component usage.
+        void IconComponent;
         return (
             <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-12 items-center mb-20`}>
                 <div className="flex-1 space-y-6">
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-black rounded-lg">
-                            <Icon className="w-6 h-6 text-yellow-300" />
+                            <IconComponent className="w-6 h-6 text-yellow-300" />
                         </div>
                         <h3 className="text-3xl font-bold text-gray-900">{title}</h3>
                     </div>
@@ -127,9 +128,8 @@ const ProjectManagement = () => {
             title: "Labour Management",
             description: "Track workforce attendance, roles, and productivity with ease. Ensure optimal manpower utilization for every project phase.",
             features: [
-                "Attendance tracking",
                 "Labour allocation",
-                "Productivity insights"
+                "Salary Tracking"
             ],
             image: (
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg relative overflow-hidden">
@@ -215,7 +215,6 @@ const ProjectManagement = () => {
     title: "Billing Management",
     description: "Streamline invoicing, track payments, and manage billing cycles effortlessly. Keep your cash flow healthy with automated billing reminders and detailed payment records.",
     features: [
-        "Automated invoice generation",
         "Payment tracking & reminders",
         "Billing history & reports"
     ],
@@ -264,35 +263,7 @@ const ProjectManagement = () => {
         
     ];
 
-    const data = [
-        {
-            title: 'Material Tracking',
-            icon: Package,
-            description: 'Complete material inventory management with real-time stock monitoring and automated reordering alerts.',
-            features: [
-                { icon: TrendingUp, title: 'Stock Monitoring', desc: 'Real-time inventory levels across all sites' },
-                { icon: Truck, title: 'Supply Chain', desc: 'Track material deliveries and supplier performance' }
-            ]
-        },
-        {
-            title: 'Financial Oversight',
-            icon: DollarSign,
-            description: 'Comprehensive financial management with budget tracking, expense monitoring, and detailed reporting.',
-            features: [
-                { icon: BarChart3, title: 'Budget Analysis', desc: 'Monitor project budgets and cost variances' },
-                { icon: Receipt, title: 'Expense Tracking', desc: 'Track all project-related expenses' }
-            ]
-        },
-        {
-            title: 'Workforce Management',
-            icon: Users,
-            description: 'Efficient labor management with attendance tracking, skill assessment, and automated payroll.',
-            features: [
-                { icon: Clock, title: 'Attendance System', desc: 'Automated check-in/out and overtime tracking' },
-                { icon: Calculator, title: 'Payroll Automation', desc: 'Automated payslip generation and distribution' }
-            ]
-        }
-    ];
+    // (Removed unused legacy `data` constant)
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -300,7 +271,7 @@ const ProjectManagement = () => {
             <div className="bg-yellow-500 text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold mb-6 text-black">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-black">
                             Smart Project Management, Built for Complete Control
                         </h1>
 
@@ -312,7 +283,7 @@ const ProjectManagement = () => {
                                 Get Started
                             </Link>
 
-                            <Link to="/book-demo" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-900 transition text-center">
+                            <Link to="/contact" className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-900 transition text-center">
                                 Request a Demo
                             </Link>
                         </div>
@@ -327,7 +298,7 @@ const ProjectManagement = () => {
                     <p className="text-xl text-gray-600">Explore our specialized management modules designed to optimize different aspects of your construction projects and business operations.</p>
                 </div>
 
-                {products.map((product, index) => (
+                {products.map((product) => (
                     <div key={product.id} id={product.id} className="scroll-mt-40">
                         <ProductCard {...product} />
                     </div>

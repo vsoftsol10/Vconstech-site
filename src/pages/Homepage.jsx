@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import heroImg from '../assets/herobck.png';
 import softwareErpImg from '../assets/software-Erp.jpg';
-import dashboardImg from '../assets/vconstech-Homepage.png';
-import reportsImg from '../assets/vconstech-Financialpage.png';
-import mobileImg from '../assets/vconstech-materialManagementPage.png';
+import dashboardImg from '../assets/11.jpg';
+import mobileImg from '../assets/9.jpg';
+import reportsImg from '../assets/10.jpg';
 import contractorImg from '../assets/contractorCard.jpg';
 import interiorImg from '../assets/interiorCard.jpg';
 import ownerImg from '../assets/builders-1.jpg';
@@ -14,8 +15,15 @@ import MobileGif from "../assets/mobile 1.gif";
 import sketch from "../assets/pointing-sketch.jpg"
 import woman from "../assets/woman-working-as-engineer.jpg"
 import project from "../assets/project.jpg"
+import BillingManagement from "../assets/Billing Management.jpg";
+import ProjectPlanning from "../assets/Construction.jpg";
+import ResourceManagement from "../assets/project-management.jpg";
+import CostEstimation from "../assets/Cost Estimation.jpg";
+import ReportingAnalytics from "../assets/Reporting & Analytics.jpg";
 
 const Homepage = () => {
+
+
   const features = [
     {
       icon: (
@@ -75,6 +83,123 @@ const Homepage = () => {
     },
   ];
 
+
+  const solutions = [
+    {
+      id: "project-planning",
+      image: ProjectPlanning,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" strokeLinecap="round" />
+          <rect x="9" y="3" width="6" height="4" rx="1" />
+          <path d="M9 12h6M9 16h4" strokeLinecap="round" />
+        </svg>
+      ),
+      label: "Project Planning",
+      tagline: "Intelligent scheduling & milestone tracking",
+      description:
+        "Plan every phase of your construction project with AI-driven scheduling tools. Set milestones, assign teams, and track progress in real time - all from a single intuitive dashboard.",
+      capabilities: [
+        "Smart Gantt chart builder",
+        "Milestone & deadline alerts",
+        "Team workload balancing",
+        "Critical path analysis",
+        "Version-controlled project plans",
+      ],
+    },
+    {
+      id: "resource-management",
+      image: ResourceManagement,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+          <rect x="1" y="3" width="15" height="13" rx="2" />
+          <path d="M16 8h4a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-3" strokeLinecap="round" />
+          <circle cx="8.5" cy="9.5" r="1.5" />
+        </svg>
+      ),
+      label: "Resource Management",
+      tagline: "Optimize materials, equipment & labor",
+      description:
+        "Eliminate waste and maximize efficiency by managing all your construction resources in one place. Track inventory, allocate equipment, and schedule your workforce with precision.",
+      capabilities: [
+        "Real-time inventory tracking",
+        "Equipment utilization reports",
+        "Labor scheduling & shift management",
+        "Supplier & vendor management",
+        "Material requisition workflows",
+      ],
+    },
+    {
+      id: "cost-estimation",
+      image: CostEstimation,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points="16 7 22 7 22 13" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+      label: "Cost Estimation",
+      tagline: "AI-powered budgeting & forecasting",
+      description:
+        "Generate accurate project estimates using historical data and AI forecasting. Catch budget overruns before they happen and keep your financial plan aligned with reality throughout the build.",
+      capabilities: [
+        "Automated quantity take-off",
+        "AI-driven cost forecasting",
+        "Budget vs. actual comparison",
+        "Change order impact analysis",
+        "Exportable cost reports",
+      ],
+    },
+    {
+      id: "billing-management",
+      image: BillingManagement,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points="14 2 14 8 20 8" strokeLinecap="round" strokeLinejoin="round" />
+          <line x1="12" y1="18" x2="12" y2="12" strokeLinecap="round" />
+          <line x1="9" y1="15" x2="15" y2="15" strokeLinecap="round" />
+        </svg>
+      ),
+      label: "Billing Management",
+      tagline: "Automated invoicing & payment tracking",
+      description:
+        "Streamline invoicing, payment tracking, and financial reconciliation with automated billing workflows. Reduce delays, eliminate manual errors, and keep your cash flow healthy.",
+      capabilities: [
+        "Automated invoice generation",
+        "Payment tracking & reminders",
+        "Multi-currency support",
+        "Financial reconciliation dashboard",
+        "Client payment portals",
+      ],
+    },
+    {
+      id: "reporting-analytics",
+      image: ReportingAnalytics,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth={1.8}>
+          <path d="M18 20V10M12 20V4M6 20v-6" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="18" cy="7" r="2" />
+          <circle cx="12" cy="2" r="2" />
+          <circle cx="6" cy="12" r="2" />
+        </svg>
+      ),
+      label: "Reporting & Analytics",
+      tagline: "Custom dashboards & predictive insights",
+      description:
+        "Turn raw project data into actionable intelligence. Build custom dashboards, run predictive analytics, and share executive-ready reports with stakeholders - all in real time.",
+      capabilities: [
+        "Drag-and-drop dashboard builder",
+        "Predictive completion forecasting",
+        "KPI monitoring & alerts",
+        "Cross-project benchmarking",
+        "Automated report scheduling",
+      ],
+    },
+  ];
+  const [activeId, setActiveId] = useState("billing-management");
+  const active = solutions.find((f) => f.id === activeId);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -99,7 +224,7 @@ const Homepage = () => {
         ></div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      {/* <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-12">
             Designed for Construction Professionals
@@ -129,10 +254,10 @@ const Homepage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-yellow-200">
+      {/* <section className="py-12 sm:py-16 md:py-20 bg-yellow-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
             Powerful Features for Construction Professionals
@@ -150,10 +275,10 @@ const Homepage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose Vconstech Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-white">
+      {/* <section className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
             Why Choose <span className="text-[#ffbe01]">Vconstech</span>?
@@ -161,9 +286,9 @@ const Homepage = () => {
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
             Addressing the biggest challenges in construction management with proven solutions that save time, reduce costs, and boost profitability.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {/* Card 1 */}
-            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8"> */}
+      {/* Card 1 */}
+      {/* <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={Time1} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
               <h3 className="text-lg sm:text-xl font-bold  mb-2">Project Delays</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Common construction challenge</p>
@@ -171,10 +296,10 @@ const Homepage = () => {
               <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
                 Real-time project tracking, automated progress updates, and intelligent scheduling prevent delays and ensure projects stay on track with 98% on-time delivery rate.
               </p>
-            </div>
+            </div> */}
 
-            {/* Card 2 */}
-            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
+      {/* Card 2 */}
+      {/* <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={costoverruns} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto h-fit transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
               <h3 className="text-lg sm:text-xl font-bold  mb-2 ">Cost Overruns</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Budget management nightmare</p>
@@ -183,10 +308,10 @@ const Homepage = () => {
                 Advanced cost tracking, budget forecasting, and material cost optimization
                 help you stay within budget and maximize profitability on every project.
               </p>
-            </div>
+            </div> */}
 
-            {/* Card 3 */}
-            <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
+      {/* Card 3 */}
+      {/* <div className="bg-yellow-200 p-4 sm:p-6 md:p-8 rounded-lg">
               <img src={digital} alt="Project Delays" className="max-w-20 sm:max-w-24 md:max-w-32 lg:max-w-36 mx-auto transition-transform duration-300 ease-in-out transform hover:scale-105 mb-3 sm:mb-4" />
               <h3 className="text-lg sm:text-xl font-bold  mb-2">Manual Paperwork</h3>
               <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 font-medium">Time-consuming documentation</p>
@@ -199,6 +324,86 @@ const Homepage = () => {
 
           </div>
         </div>
+      </section> */}
+
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-10 font-sans">
+        {/* Header */}
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-3">
+            Comprehensive Solutions For Modern Construction
+          </h2>
+          <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+            Powerful tools designed to transform every aspect of your project lifecycle
+          </p>
+        </div>
+
+        {/* Feature Cards Row */}
+        <div className="flex flex-nowrap overflow-x-auto gap-3 sm:gap-4 pb-2 mb-8 justify-start sm:justify-center scrollbar-hide">
+          {solutions.map((f) => {
+            const isActive = f.id === activeId;
+            return (
+              <button
+                key={f.id}
+                onClick={() => setActiveId(f.id)}
+                className={`
+                flex-shrink-0 flex flex-col items-center text-center rounded-2xl px-4 py-5 w-36 sm:w-40 transition-all duration-200 border-2 cursor-pointer
+                ${isActive
+                    ? "border-amber-400 bg-white shadow-md"
+                    : "border-transparent bg-yellow-400 hover:bg-gray-50 hover:border-gray-200"
+                  }
+              `}
+              >
+                <div
+                  className={`
+                  flex items-center justify-center w-14 h-14 rounded-xl mb-3 transition-colors duration-200
+                  ${isActive ? "bg-yellow-400 text-black" : "bg-amber-100 text-amber-500"}
+                `}
+                >
+                  {f.icon}
+                </div>
+                <span className="text-sm font-semibold text-gray-800 leading-snug">{f.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Detail Panel */}
+        {active && (
+          <div className="max-w-5xl mx-auto bg-gray-50 rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+            <div className="flex flex-col md:flex-row">
+              {/* Left: Text */}
+              <div className="flex-1 p-8 sm:p-10">
+                <h3 className="text-2xl sm:text-3xl font-bold text-amber-500 mb-3">{active.label}</h3>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 max-w-md">
+                  {active.description}
+                </p>
+                <p className="font-semibold text-gray-800 mb-4 text-sm sm:text-base">Key Capabilities:</p>
+                <ul className="space-y-3">
+                  {active.capabilities.map((cap) => (
+                    <li key={cap} className="flex items-center gap-3">
+                      <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-amber-400">
+                        <svg className="w-3 h-3 text-white" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="text-gray-700 text-sm sm:text-base">{cap}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Right: Visual */}
+              <div className="md:w-80 lg:w-96 flex-shrink-0 rounded-b-3xl md:rounded-b-none md:rounded-r-3xl overflow-hidden min-h-56 sm:min-h-64 md:min-h-0 md:self-stretch">
+                <img
+                  src={active.image}
+                  alt={active.label}
+                  className="w-full h-full object-cover"
+                  style={{ minHeight: '100%', display: 'block' }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Who It's For Section */}
@@ -389,32 +594,16 @@ const Homepage = () => {
             <div className="flex flex-col items-center">
               {/* Phone Frame */}
               <div className="relative">
-                <div className="bg-gray-900 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                  <div className="bg-black rounded-2xl overflow-hidden shadow-inner">
-                    {/* Phone Notch */}
-                    <div className="h-8 bg-black flex justify-center">
-                      <div className="w-24 h-5 bg-gray-900 rounded-b-xl mt-1"></div>
-                    </div>
-                    {/* Screen Content */}
-                    <div className="relative bg-white">
-                      <img
-                        src={dashboardImg}
-                        alt="Vconstech Live Dashboard"
-                        className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
-                      />
-                      {/* Status Bar */}
-                      <div className="absolute top-2 left-4 right-4 flex justify-between items-center text-black text-xs">
-                        <span>9:41</span>
-                        <div className="flex items-center space-x-1">
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-6 h-2 bg-black rounded-sm"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Screen Content */}
+                <div className="relative bg-white">
+                  <img
+                    src={dashboardImg}
+                    alt="Vconstech Live Dashboard"
+                    className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
+                  />
                 </div>
               </div>
+
               {/* Title */}
               <div className="text-center mt-6">
                 <h3 className="text-xl font-bold text-black mb-2">Live Dashboard</h3>
@@ -426,68 +615,32 @@ const Homepage = () => {
             <div className="flex flex-col items-center">
               {/* Phone Frame */}
               <div className="relative">
-                <div className="bg-gray-900 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                  <div className="bg-black rounded-2xl overflow-hidden shadow-inner">
-                    {/* Phone Notch */}
-                    <div className="h-8 bg-black flex justify-center">
-                      <div className="w-24 h-5 bg-gray-900 rounded-b-xl mt-1"></div>
-                    </div>
-                    {/* Screen Content */}
-                    <div className="relative bg-white">
-                      <img
-                        src={reportsImg}
-                        alt="Vconstech Reports Dashboard"
-                        className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
-                      />
-                      {/* Status Bar */}
-                      <div className="absolute top-2 left-4 right-4 flex justify-between items-center text-black text-xs">
-                        <span>9:41</span>
-                        <div className="flex items-center space-x-1">
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-6 h-2 bg-black rounded-sm"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Screen Content */}
+                <div className="relative bg-white">
+                  <img
+                    src={reportsImg}
+                    alt="Vconstech Reports Dashboard"
+                    className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
+                  />
                 </div>
               </div>
               {/* Title */}
               <div className="text-center mt-6">
-                <h3 className="text-xl font-bold text-black mb-2">Advanced Reports</h3>
-                <p className="text-gray-600 text-sm max-w-xs">Comprehensive analytics and detailed reporting</p>
+                <h3 className="text-xl font-bold text-black mb-2">Flexible Pricing Plans</h3>
+                <p className="text-gray-600 text-sm max-w-xs">Affordable plans tailored for every stage of your business</p>
               </div>
             </div>
 
             {/* Mobile Access Preview - Mobile Style */}
             <div className="flex flex-col items-center">
-              {/* Phone Frame */}
-              <div className="relative">
-                <div className="bg-gray-900 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                  <div className="bg-black rounded-2xl overflow-hidden shadow-inner">
-                    {/* Phone Notch */}
-                    <div className="h-8 bg-black flex justify-center">
-                      <div className="w-24 h-5 bg-gray-900 rounded-b-xl mt-1"></div>
-                    </div>
-                    {/* Screen Content */}
-                    <div className="relative bg-white">
-                      <img
-                        src={mobileImg}
-                        alt="Vconstech Mobile Interface"
-                        className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
-                      />
-                      {/* Status Bar */}
-                      <div className="absolute top-2 left-4 right-4 flex justify-between items-center text-black text-xs">
-                        <span>9:41</span>
-                        <div className="flex items-center space-x-1">
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-4 h-2 bg-black rounded-sm"></div>
-                          <div className="w-6 h-2 bg-black rounded-sm"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            {/* Phone Frame */}
+            <div className="relative">
+              <div className="relative bg-white">
+                <img
+                  src={mobileImg}
+                  alt="Vconstech Mobile Interface"
+                   className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] object-cover"
+                />
               </div>
               {/* Title */}
               <div className="text-center mt-6">
@@ -495,6 +648,7 @@ const Homepage = () => {
                 <p className="text-gray-600 text-sm max-w-xs">Access your projects anywhere, anytime</p>
               </div>
             </div>
+          </div>
           </div>
 
           {/* Simple Benefits */}

@@ -29,41 +29,98 @@ If you're getting "Failed to submit demo request. Please try again.", follow the
 
 ## Step 3: Create Email Templates
 
-### Template 1: Demo Request Template
+### Template 1: Customer Auto-Reply Template
 1. Go to "Email Templates" in EmailJS dashboard
 2. Click "Create New Template"
-3. Use these settings:
+3. Set the **To** field to: `{{customer_email}}`
+4. Use these settings:
 
 **Subject:**
 ```
-New Demo Request from {{customer_name}} - Vconstech ERP
+Thank you for your demo request - Vconstech
 ```
 
 **Content:**
-```
-Dear Vconstech Team,
+```html
+<div style="font-family: system-ui, sans-serif; font-size: 14px; color:#333">
 
-You have received a new demo request from Vconstech website.
+  <!-- LOGO (optional) -->
+  <div style="margin-bottom:15px;">
+    <img src="https://yourdomain.com/logo.png" alt="logo" style="height:40px;" />
+  </div>
 
-Customer Details:
-- Name: {{customer_name}}
-- Email: {{customer_email}}
-- Phone: {{customer_phone}}
-- Profession: {{customer_profession}}
-- Message: {{customer_message}}
+  <p>Hi <strong>{{customer_name}}</strong>,</p>
 
-Demo Request Date: {{demo_request_date}}
+  <p>
+    Thank you for requesting a demo with us! 🎉
+  </p>
 
-Please contact the customer at your earliest convenience to schedule a demo.
+  <p>
+    We've received your request regarding <strong>{{customer_subject}}</strong>, and our team will contact you within 24 hours.
+  </p>
 
-Best regards,
-Vconstech Website
+  <div style="margin:20px 0; padding:15px; background:#f9f9f9; border-radius:6px;">
+    <strong>Your Message:</strong>
+    <p style="margin-top:5px;">{{customer_message}}</p>
+  </div>
+
+  <p>
+    We look forward to helping you with your requirements 🚀
+  </p>
+
+  <p style="margin-top:20px;">
+    Best regards,<br/>
+    <strong>Vconstech Team</strong><br/>
+    📧 vconstecherp@gmail.com
+  </p>
+
+</div>
 ```
 
 4. Save the template and copy the **Template ID**
 
-### Template 2: Contact Form Template
+### Template 2: Admin Notification Template
+1. Create another template for admin notifications:
+
+**To:** `vconstecherp@gmail.com` (or your admin email)
+
+**Subject:**
+```
+New Demo Request
+```
+
+**Content:**
+```html
+<div style="font-family: system-ui, sans-serif; font-size: 14px; color:#333">
+
+  <h2 style="margin-bottom:10px;"> New Demo Request</h2>
+
+  <div style="margin-top:15px; padding:15px; border:1px solid #eee; border-radius:8px; background:#fafafa;">
+    
+    <p><strong>👤 Name:</strong> {{customer_name}}</p>
+    <p><strong>📧 Email:</strong> {{customer_email}}</p>
+    <p><strong>📞 Phone:</strong> {{customer_phone}}</p>
+    <p><strong>🏢 Company:</strong> {{customer_company}}</p>
+    <p><strong>📌 Subject:</strong> {{customer_subject}}</p>
+
+    <div style="margin-top:10px;">
+      <strong>📝 Message:</strong>
+      <p style="margin-top:5px;">{{customer_message}}</p>
+    </div>
+
+  </div>
+
+  <p style="margin-top:20px; font-size:12px; color:#777;">
+    This request was submitted from the Get Demo page.
+  </p>
+
+</div>
+```
+
+### Template 3: Contact Form Template
 1. Create another template for general contact form submissions:
+
+**To:** `vconstecherp@gmail.com` (or your admin email)
 
 **Subject:**
 ```
@@ -93,8 +150,10 @@ Best regards,
 Vconstech Contact System
 ```
 
-### Template 3: Payment Confirmation Template
+### Template 4: Payment Confirmation Template
 1. Create another template for payment confirmations:
+
+**To:** `{{customer_email}}`
 
 **Subject:**
 ```
@@ -139,8 +198,9 @@ Create a `.env` file in your project root:
 ```env
 # EmailJS Configuration
 VITE_EMAILJS_SERVICE_ID=your_actual_service_id
-VITE_EMAILJS_DEMO_TEMPLATE_ID=template_l7iea6q
-VITE_EMAILJS_CONTACT_TEMPLATE_ID=template_pg7ogpb
+VITE_EMAILJS_CUSTOMER_REPLY_TEMPLATE_ID=your_customer_reply_template_id
+VITE_EMAILJS_ADMIN_NOTIFICATION_TEMPLATE_ID=your_admin_notification_template_id
+VITE_EMAILJS_CONTACT_TEMPLATE_ID=your_contact_template_id
 VITE_EMAILJS_PAYMENT_TEMPLATE_ID=your_payment_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_actual_public_key
 ```
@@ -152,7 +212,8 @@ Update `src/config/emailjs.js`:
 ```javascript
 export const EMAILJS_CONFIG = {
   SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  DEMO_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_DEMO_TEMPLATE_ID,
+  CUSTOMER_REPLY_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_CUSTOMER_REPLY_TEMPLATE_ID,
+  ADMIN_NOTIFICATION_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_ADMIN_NOTIFICATION_TEMPLATE_ID,
   CONTACT_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
   PAYMENT_TEMPLATE_ID: import.meta.env.VITE_EMAILJS_PAYMENT_TEMPLATE_ID,
   PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -219,7 +280,7 @@ import('./utils/testEmailJS.js').then(module => module.testEmailJS())
 - **Cause**: Email service not connected properly
 - **Solution**: Reconnect email service in EmailJS dashboard
 
-**Issue: Template variables not working**
+**Issue:  variables not working**
 - **Cause**: Variable names don't match
 - **Solution**: Ensure template uses: `{{customer_name}}`, `{{customer_email}}`, etc.
 

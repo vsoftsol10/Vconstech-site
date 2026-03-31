@@ -1,24 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailjs';
+import { useNavigate } from "react-router-dom";
 import welcomeImg from '../assets/welcome.png';
-import { useLocation, useNavigate } from "react-router-dom";
-// Initialize EmailJS
-emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-
-// Debug function for testing EmailJS - call this from browser console:
+/* Debug function for testing EmailJS - call this from browser console:
 // window.testEmailJS()
 window.testEmailJS = async () => {
   
 
   console.log('🧪 Testing EmailJS configuration...');
   console.log('Service ID:', EMAILJS_CONFIG.SERVICE_ID);
-  console.log('Template ID:', EMAILJS_CONFIG.DEMO_TEMPLATE_ID);
+  console.log('Template ID:', EMAILJS_CONFIG.ADMIN_NOTIFICATION_TEMPLATE_ID);
   console.log('Public Key:', EMAILJS_CONFIG.PUBLIC_KEY);
 
-
-  
 
   try {
     const testData = {
@@ -32,7 +24,7 @@ window.testEmailJS = async () => {
 
     const result = await emailjs.send(
       EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.DEMO_TEMPLATE_ID,
+      EMAILJS_CONFIG.ADMIN_NOTIFICATION_TEMPLATE_ID,
       testData,
       EMAILJS_CONFIG.PUBLIC_KEY
     );
@@ -43,15 +35,16 @@ window.testEmailJS = async () => {
     console.error('❌ EmailJS test failed:', error);
     alert(`❌ EmailJS test failed: ${error?.text || error?.message}`);
   }
-};
+};*/
 
 const FloatingButtons = () => {
-  const location = useLocation();
   const navigate = useNavigate();
 
-  const [errors, setErrors] = useState({});
 
   const [isVisible, setIsVisible] = useState(false);
+
+  // Legacy demo-modal state (modal no longer opens; kept only to prevent runtime errors)
+  const [errors] = useState({});
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [demoForm, setDemoForm] = useState({
@@ -62,7 +55,17 @@ const FloatingButtons = () => {
     message: ''
   });
 
-   if (location.pathname === "/book-demo") return null;
+  const handleDemoFormChange = (e) => {
+    const { name, value } = e.target;
+    setDemoForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDemoSubmit = (e) => {
+    e.preventDefault?.();
+    setShowDemoModal(false);
+    setShowSuccessModal(false);
+    navigate('/contact');
+  };
 
   // Show button when page is scrolled up to given distance
   const toggleVisibility = () => {
@@ -84,14 +87,14 @@ const FloatingButtons = () => {
   // Listen for demo modal open event
   useEffect(() => {
     const handleOpenDemoModal = () => {
-      setShowDemoModal(true);
+      navigate('/contact');
     };
 
     window.addEventListener('openDemoModal', handleOpenDemoModal);
     return () => {
       window.removeEventListener('openDemoModal', handleOpenDemoModal);
     };
-  }, []);
+  }, [navigate]);
 
   // Scroll to top smoothly
   const scrollToTop = () => {
@@ -101,7 +104,7 @@ const FloatingButtons = () => {
     });
   };
 
-  // Handle demo form changes
+  /* Demo modal removed (demo requests go to /contact).
   const handleDemoFormChange = (e) => {
     const { name, value } = e.target;
 
@@ -144,11 +147,10 @@ const FloatingButtons = () => {
 
     if (!validateDemoForm()) return;
 
-
     console.log('Starting demo submission...');
     console.log('Form data:', demoForm);
     console.log('EmailJS Config:', EMAILJS_CONFIG);
-    console.log('Using template:', EMAILJS_CONFIG.DEMO_TEMPLATE_ID);
+      console.log('Using template:', EMAILJS_CONFIG.ADMIN_NOTIFICATION_TEMPLATE_ID);
 
     try {
       const templateParams = {
@@ -160,16 +162,40 @@ const FloatingButtons = () => {
         demo_request_date: new Date().toLocaleDateString(),
       };
 
-      console.log('Sending email with params:', templateParams);
+      console.log('Sending admin notification email with params:', templateParams);
 
-      const result = await emailjs.send(
+      // Send admin notification
+      const adminResult = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.DEMO_TEMPLATE_ID,
+        EMAILJS_CONFIG.ADMIN_NOTIFICATION_TEMPLATE_ID,
         templateParams,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      console.log('EmailJS result:', result);
+      console.log('Admin demo notification sent successfully:', adminResult);
+
+      // Send auto reply to user
+      const userReplyParams = {
+        to_name: demoForm.name,
+        to_email: demoForm.email,
+        customer_name: demoForm.name,
+        customer_email: demoForm.email,
+        customer_phone: demoForm.phone,
+        customer_profession: demoForm.profession,
+        customer_message: demoForm.message || 'No additional message',
+        demo_request_date: new Date().toLocaleDateString(),
+      };
+
+      const userResult = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.CUSTOMER_REPLY_TEMPLATE_ID,
+        userReplyParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      console.log('User auto reply sent successfully:', userResult);
+
+      console.log('EmailJS result:', adminResult);
       setShowDemoModal(false);
       setShowSuccessModal(true);
       setDemoForm({ name: '', email: '', phone: '', profession: '', message: '' });
@@ -179,7 +205,7 @@ const FloatingButtons = () => {
       console.log('Error text:', error?.text);
       console.log('Error status:', error?.status);
       console.log('Error message:', error?.message);
-      console.log('Template used:', EMAILJS_CONFIG.DEMO_TEMPLATE_ID);
+      console.log('Template used:', EMAILJS_CONFIG.ADMIN_NOTIFICATION_NOTIFICATION_TEMPLATE_ID);
       console.log('Service used:', EMAILJS_CONFIG.SERVICE_ID);
 
       // More detailed error handling
@@ -201,7 +227,7 @@ const FloatingButtons = () => {
 
       alert(errorMessage);
     }
-  };
+  };*/
 
   return (
     <>
@@ -209,7 +235,7 @@ const FloatingButtons = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-25 right-6 bg-[#ffbe01] text-black p-4 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-50 group"
+          className="fixed bottom-40 right-6 bg-[#ffbe01] text-black p-4 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-50 group"
           aria-label="Scroll to top"
         >
           <svg
@@ -230,8 +256,8 @@ const FloatingButtons = () => {
 
       {/* Book Demo Floating Button */}
       <button
-        onClick={() => setShowDemoModal(true)}
-        className="fixed bottom-25 left-6 bg-black text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 group flex items-center space-x-2"
+        onClick={() => navigate('/contact')}
+        className="fixed bottom-24 right-6 bg-black text-white px-6 py-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 z-50 group flex items-center space-x-2"
         aria-label="Book a demo"
       >
         <svg
@@ -249,6 +275,23 @@ const FloatingButtons = () => {
         </svg>
         <span className="font-medium text-sm">Book Demo</span>
       </button>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/+918270767468"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-28 left-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 z-50 group"
+        aria-label="Contact us on WhatsApp"
+      >
+        <svg
+          className="w-6 h-6 transform group-hover:scale-110 transition-transform duration-200"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+      </a>
 
       {/* Demo Request Modal */}
       {showDemoModal && (

@@ -1,7 +1,6 @@
 import heroVideo from '../assets/abouthero.mp4';
 
 import timeImage from "../assets/3.png";
-import costmanagement from "../assets/cost management.jpg";
 import Service24 from "../assets/Service24.jpg"
 import ideas from "../assets/ideas.png";
 import SaveMoney from "../assets/weight_7448974.png";
@@ -76,10 +75,6 @@ const About = () => {
       description: "Regular updates and new features based on industry feedback and technological advancements."
     }
   ];
-
-  const aboutImages = {
-    teamCollaboration: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
-  };
 
   return (
 
@@ -305,12 +300,12 @@ const About = () => {
 
               <div className="bg-white p-6 rounded-lg shadow-md ">
                 <div className="flex items-start">
-                  <img src={hours24} className=" text-black rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4"/>
+                  <img src={hours24} className=" text-black rounded-full w-10 h-10 flex items-center jus6ify-center font-bold mr-4"/>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">24/7 Priority Support</h3>
                     <p className="text-gray-600">24/7 expert support from construction specialists ensures you never face technical challenges alone.</p>
                   </div>
-                </div>
+                </div>      
               </div>
 
               <div className="bg-white p-6 rounded-lg shadow-md">
