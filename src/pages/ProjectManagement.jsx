@@ -4,12 +4,40 @@ import { useLocation, Link } from 'react-router-dom';
 import { CheckCircle, Package, Users, DollarSign, FolderOpen, Handshake, TrendingUp, Clock, Calculator, BarChart3, Receipt, Truck,Dock } from 'lucide-react';
 // import FloatingButtons from '../components/FloatingButtons.jsx';
 import FloatingButtons from "../components/FloatingButtons";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 
 const ProjectManagement = () => {
     const location = useLocation();
 
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animation
+        gsap.fromTo('.hero-content', 
+          { opacity: 0, y: -50 }, 
+          { opacity: 1, y: 0, duration: 1 }
+        );
+
+        // Section animations on scroll
+        gsap.utils.toArray('.animate-section').forEach((section) => {
+          gsap.fromTo(section, 
+            { opacity: 0, y: 50 },
+            { 
+              opacity: 1, 
+              y: 0, 
+              duration: 1,
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        });
+
         if (location.hash) {
             // Wait for DOM to be fully rendered before scrolling
             const timeoutId = setTimeout(() => {
@@ -270,7 +298,7 @@ const ProjectManagement = () => {
             {/* Hero Section */}
             <div className="bg-yellow-500 text-white py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
+                    <div className="text-center hero-content">
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-black">
                             Smart Project Management, Built for Complete Control
                         </h1>
@@ -292,7 +320,7 @@ const ProjectManagement = () => {
             </div>
 
             {/* Products Section */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-section">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">Project Management Modules</h2>
                     <p className="text-xl text-gray-600">Explore our specialized management modules designed to optimize different aspects of your construction projects and business operations.</p>
@@ -306,7 +334,7 @@ const ProjectManagement = () => {
             </div>
 
             {/* CTA Section */}
-            <div className="bg-yellow-500 text-black py-16">
+            <div className="bg-yellow-500 text-black py-16 animate-section">
                 <div className="max-w-4xl mx-auto text-center px-4">
                     <h2 className="text-4xl font-bold mb-6">Transform your project management, streamline your operations</h2>
                     <div className="flex gap-4 justify-center">

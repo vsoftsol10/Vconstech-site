@@ -1,10 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import contactHero from '../assets/contact-hero.mp4';
-import ContactImg from '../assets/contact-img.jpeg';
+import ContactImg from '../assets/contact-img.webp';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Contact = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    // Hero animation
+    gsap.fromTo('.hero-content', 
+      { opacity: 0, y: -50 }, 
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Section animations on scroll
+    gsap.utils.toArray('.animate-section').forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  }, []);
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
@@ -220,7 +249,7 @@ const validateForm = () => {
 
   {/* Content */}
   <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center">
+    <div className="text-center hero-content">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Contact <span className="text-[#ffbe01]">Us</span>
             </h1>
@@ -232,7 +261,7 @@ const validateForm = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -372,7 +401,7 @@ const validateForm = () => {
             <div>
               <div className="sticky top-8">
                 <img src={ContactImg} alt="Contact" className="w-full h-auto rounded-md" />
-              </div>
+              </div>   
             </div>
           </div>
 

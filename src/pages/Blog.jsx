@@ -1,7 +1,37 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import blogHeroVideo from '../assets/bloghero.mp4';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Blog = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    // Hero animation
+    gsap.fromTo('.hero-content', 
+      { opacity: 0, y: -50 }, 
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Section animations on scroll
+    gsap.utils.toArray('.animate-section').forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  }, []);
   const blogPosts = [
     {
       id: 1,
@@ -88,7 +118,7 @@ const Blog = () => {
 
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-center hero-content">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Vconstech <span className="text-[#ffbe01]">Blog</span>
             </h1>
@@ -100,7 +130,7 @@ const Blog = () => {
       </section>
 
       {/* Blog Content */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured Post */}
           <div className="mb-16">
@@ -228,7 +258,7 @@ const Blog = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 bg-black text-white animate-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Construction Business?

@@ -1,27 +1,56 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroImg from '../assets/herobck.png';
-import softwareErpImg from '../assets/software-Erp.jpg';
-import dashboardImg from '../assets/11.jpg';
-import mobileImg from '../assets/9.jpg';
-import reportsImg from '../assets/10.jpg';
+import softwareErpImg from '../assets/software-Erp.webp';
+import dashboardImg from '../assets/11.webp';
+import mobileImg from '../assets/9.webp';
+import reportsImg from '../assets/10.webp';
 import contractorImg from '../assets/contractorCard.jpg';
 import interiorImg from '../assets/interiorCard.jpg';
-import ownerImg from '../assets/builders-1.jpg';
+import ownerImg from '../assets/builders-1.webp';
 import Time1 from '../assets/Time1.jpg'; // adjust path as needed
 import digital from "../assets/digital.jpg";
 import costoverruns from "../assets/costoverruns.jpg";
 import MobileGif from "../assets/mobile 1.gif";
 import sketch from "../assets/pointing-sketch.jpg"
 import woman from "../assets/woman-working-as-engineer.jpg"
-import project from "../assets/project.jpg"
-import BillingManagement from "../assets/Billing Management.jpg";
-import ProjectPlanning from "../assets/Construction.jpg";
+import project from "../assets/project.webp"
+import BillingManagement from "../assets/Billing Management.webp";
+import ProjectPlanning from "../assets/Construction.webp";
 import ResourceManagement from "../assets/project-management.jpg";
-import CostEstimation from "../assets/Cost Estimation.jpg";
-import ReportingAnalytics from "../assets/Reporting & Analytics.jpg";
+import CostEstimation from "../assets/Cost Estimation.webp";
+import ReportingAnalytics from "../assets/Reporting & Analytics.webp";
 
 const Homepage = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    // Hero animation
+    gsap.fromTo('.hero-content', 
+      { opacity: 0, y: -50 }, 
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Section animations on scroll
+    gsap.utils.toArray('.animate-section').forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  }, []);
 
 
   const features = [
@@ -326,7 +355,7 @@ const Homepage = () => {
         </div>
       </section> */}
 
-      <section className="bg-white py-16 px-4 sm:px-6 lg:px-10 font-sans">
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-10 font-sans animate-section">
         {/* Header */}
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-3">
@@ -407,7 +436,7 @@ const Homepage = () => {
       </section>
 
       {/* Who It's For Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-yellow-200">
+      <section className="py-8 sm:py-12 md:py-16 bg-yellow-200 animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
@@ -509,7 +538,7 @@ const Homepage = () => {
       </section>
 
       {/* Importance Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
@@ -577,7 +606,7 @@ const Homepage = () => {
       </section>
 
       {/* Live Site Tracking Preview Section */}
-      <section className="py-8 sm:py-10 md:py-12 bg-white">
+      <section className="py-8 sm:py-10 md:py-12 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
@@ -695,7 +724,7 @@ const Homepage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-black text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-black text-white animate-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
             Ready to Transform Your Construction Business?

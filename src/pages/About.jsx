@@ -10,8 +10,38 @@ import cyber from "../assets/cyber-security_10429893.png";
 import engineer from "../assets/engineer_11773950.png";
 import { NavLink } from "react-router-dom";
 import StoryGif from '../assets/mobile 2.gif';
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const About = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    // Hero animation
+    gsap.fromTo('.hero-content', 
+      { opacity: 0, y: -50 }, 
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Section animations on scroll
+    gsap.utils.toArray('.animate-section').forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  }, []);
 
  const features = [
     {
@@ -99,7 +129,7 @@ const About = () => {
 
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-center hero-content">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About <span className="text-[#ffbe01]">Vconstech</span>
             </h1>
@@ -111,7 +141,7 @@ const About = () => {
       </section>
 
       {/* Who We Are Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -165,7 +195,7 @@ const About = () => {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-20 bg-yellow-100">
+      <section className="py-20 bg-yellow-100 animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
@@ -193,7 +223,7 @@ const About = () => {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="bg-gradient-to-br from-[#ffbe01] to-yellow-400 p-8 rounded-lg text-black">
@@ -243,7 +273,7 @@ const About = () => {
       </section>
 
       {/* Why Vconstech Section */}
-      <section className="py-20 bg-yellow-100">
+      <section className="py-20 bg-yellow-100 animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
@@ -323,7 +353,7 @@ const About = () => {
       </section>
 
       {/* Our Commitment Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white animate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">

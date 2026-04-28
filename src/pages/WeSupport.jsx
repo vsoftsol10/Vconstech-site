@@ -1,17 +1,45 @@
 import React, { useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import { CheckCircle, ArrowRight } from 'lucide-react';
-import builders from '../assets/builders-1.jpg';
-import designers from '../assets/interior-1.jpg';
-import Exteriors from '../assets/Interior&ExteriorWorks.jpg';
-import Architect from '../assets/Engineering&TechnicalServices.jpg';
-import Renovation from '../assets/Renovation&Remodeling.jpg';
-import Product from '../assets/Project & Support Services.jpg';
+import builders from '../assets/builders-1.webp';
+import designers from '../assets/interior-1.webp';
+import Exteriors from '../assets/Interior&ExteriorWorks.webp';
+import Architect from '../assets/Engineering&TechnicalServices.webp';
+import Renovation from '../assets/Renovation&Remodeling.webp';
+import Product from '../assets/Project & Support Services.webp';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const WeSupport = () => {
   const location = useLocation();
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero animation
+    gsap.fromTo('.hero-content', 
+      { opacity: 0, y: -50 }, 
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Section animations on scroll
+    gsap.utils.toArray('.animate-section').forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+
     if (location.hash) {
       // Wait for DOM to be fully rendered before scrolling
       const timeoutId = setTimeout(() => {
@@ -221,7 +249,7 @@ const WeSupport = () => {
       {/* Hero Section */}
       <div className="bg-yellow-500 text-black py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-6 hero-content">
             <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight">
               Services We Support
             </h1>
@@ -236,7 +264,7 @@ const WeSupport = () => {
       </div>
 
       {/* Professionals Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-section">
         {professionals.map((professional) => (
           <div key={professional.id} id={professional.id} className="scroll-mt-40">
             <ProfessionalCard professional={professional} />
